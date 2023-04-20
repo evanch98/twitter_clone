@@ -9,10 +9,13 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  // to make sure appbar is not rebuilt when the screen is rebuilt
+  final appbar = UIConstants.appBar();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: UIConstants.appBar(),
+      appBar: appbar,
     );
   }
 }
