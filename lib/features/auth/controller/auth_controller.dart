@@ -3,6 +3,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/apis/auth_api.dart';
 import 'package:twitter_clone/core/core.dart';
 
+// we need to explicitly provide the type for the StateNotifierProvider
+// the first one is the datatype it is going to return
+// the second one is the datatype provided to the StateNotifier
+final authControllerProvider =
+    StateNotifierProvider<AuthController, bool>((ref) {
+      final authAPI = ref.watch(authAPIProvider);
+  return AuthController(authAPI: authAPI);
+});
+
 // AuthController
 class AuthController extends StateNotifier<bool> {
   final AuthAPI _authAPI;
