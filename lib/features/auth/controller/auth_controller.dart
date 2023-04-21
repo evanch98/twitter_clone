@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/apis/auth_api.dart';
+import 'package:twitter_clone/core/core.dart';
 
 // AuthController
 class AuthController extends StateNotifier<bool> {
@@ -13,6 +15,7 @@ class AuthController extends StateNotifier<bool> {
   void signUp({
     required String email,
     required String password,
+    required BuildContext context,
   }) async {
     state = true;
     final res = await _authAPI.signUp(
@@ -20,6 +23,9 @@ class AuthController extends StateNotifier<bool> {
       password: password,
     );
     // the fold method is from Either (l = left, r = right)
-    res.fold((l) => null, (r) => print(r.email));
+    res.fold(
+      (l) => showSnackBar(context, l.message),
+      (r) => print(r.email),
+    );
   }
 }
