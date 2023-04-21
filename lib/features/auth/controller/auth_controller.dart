@@ -24,6 +24,7 @@ class AuthController extends StateNotifier<bool> {
     );
     // the fold method is from Either (l = left, r = right)
     res.fold(
+      // since l = left = Failure datatype, we can use the message field
       (l) => showSnackBar(context, l.message),
       (r) => print(r.email),
     );
