@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:twitter_clone/common/rounded_small_button.dart';
 import 'package:twitter_clone/constants/ui_constants.dart';
 import 'package:twitter_clone/features/auth/widgets/auth_field.dart';
+import 'package:twitter_clone/theme/theme.dart';
 
 // Login Screen
 class LoginView extends StatefulWidget {
@@ -58,6 +59,29 @@ class _LoginViewState extends State<LoginView> {
                   child: RoundedSmallButton(
                     onTap: () {},
                     label: "Done",
+                  ),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                // use RichText to be able to use TextSpan
+                RichText(
+                  // use TextSpan to have text with different colors in the same
+                  // line, it is more efficient to do it this way.
+                  text: const TextSpan(
+                    text: "Don't have an account?",
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: " Sign up",
+                        style: TextStyle(
+                          color: Pallete.blueColor,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
