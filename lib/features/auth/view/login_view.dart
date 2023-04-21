@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:twitter_clone/common/rounded_small_button.dart';
 import 'package:twitter_clone/constants/ui_constants.dart';
@@ -68,18 +69,21 @@ class _LoginViewState extends State<LoginView> {
                 RichText(
                   // use TextSpan to have text with different colors in the same
                   // line, it is more efficient to do it this way.
-                  text: const TextSpan(
+                  text: TextSpan(
                     text: "Don't have an account?",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                     ),
                     children: [
                       TextSpan(
                         text: " Sign up",
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Pallete.blueColor,
                           fontSize: 16,
                         ),
+                        // to be able to tap on the sign up part (to navigate to
+                        // other screens
+                        recognizer: TapGestureRecognizer()..onTap = () {},
                       ),
                     ],
                   ),
