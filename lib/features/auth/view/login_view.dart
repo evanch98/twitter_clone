@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:twitter_clone/constants/ui_constants.dart';
 import 'package:twitter_clone/features/auth/widgets/auth_field.dart';
 
+// Login Screen
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
 
@@ -12,7 +13,9 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   // to make sure appbar is not rebuilt when the screen is rebuilt
   final appbar = UIConstants.appBar();
+  // email text editing controller
   final emailController = TextEditingController();
+  // password text editing controller
   final passwordController = TextEditingController();
 
   @override
@@ -20,8 +23,11 @@ class _LoginViewState extends State<LoginView> {
     return Scaffold(
       appBar: appbar,
       body: Center(
+        // SingleChildScrollView is to make sure that when the virtual keyboard
+        // pops up, it does not cause the out-of-pixels problem with the widgets.
         child: SingleChildScrollView(
           child: Padding(
+            // horizontal padding
             padding: const EdgeInsets.symmetric(
               horizontal: 20,
             ),
