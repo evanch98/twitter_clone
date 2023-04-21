@@ -6,6 +6,8 @@ import 'package:twitter_clone/core/core.dart';
 // we need to explicitly provide the type for the StateNotifierProvider
 // the first one is the datatype it is going to return
 // the second one is the datatype provided to the StateNotifier
+// if there is no datatype for the StateNotifier, the second one should be the
+// dynamic datatype
 final authControllerProvider =
     StateNotifierProvider<AuthController, bool>((ref) {
   final authAPI = ref.watch(authAPIProvider);
