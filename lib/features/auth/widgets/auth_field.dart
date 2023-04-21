@@ -31,6 +31,10 @@ class AuthField extends StatelessWidget {
         ),
         contentPadding: const EdgeInsets.all(22),
         hintText: hintText,
+        // to increase the overall size of the text field
+        hintStyle: const TextStyle(
+          fontSize: 18,
+        ),
       ),
     );
   }
