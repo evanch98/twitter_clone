@@ -25,6 +25,13 @@ class _SignUpViewState extends State<SignUpView> {
   final passwordController = TextEditingController();
 
   @override
+  void dispose() {
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appbar,
