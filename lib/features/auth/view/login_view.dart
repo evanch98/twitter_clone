@@ -32,7 +32,7 @@ class _LoginViewState extends State<LoginView> {
                   controller: emailController,
                   hintText: "Email",
                 ),
-                const SizedBox(height: 25,), // space between the two text field
+                const SizedBox(height: 25,), // space between the two text fields
                 // Password TextField
                 AuthField(
                   controller: passwordController,
