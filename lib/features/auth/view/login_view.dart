@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twitter_clone/common/rounded_small_button.dart';
 import 'package:twitter_clone/constants/ui_constants.dart';
 import 'package:twitter_clone/features/auth/widgets/auth_field.dart';
 
@@ -13,8 +14,10 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   // to make sure appbar is not rebuilt when the screen is rebuilt
   final appbar = UIConstants.appBar();
+
   // email text editing controller
   final emailController = TextEditingController();
+
   // password text editing controller
   final passwordController = TextEditingController();
 
@@ -38,11 +41,22 @@ class _LoginViewState extends State<LoginView> {
                   controller: emailController,
                   hintText: "Email",
                 ),
-                const SizedBox(height: 25,), // space between the two text fields
+                const SizedBox(
+                  height: 25,
+                ),
+                // space between the two text fields
                 // Password TextField
                 AuthField(
                   controller: passwordController,
                   hintText: "Password",
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                // space between the two widgets
+                RoundedSmallButton(
+                  onTap: () {},
+                  label: "Done",
                 ),
               ],
             ),
