@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/common/common.dart';
 import 'package:twitter_clone/constants/constants.dart';
 import 'package:twitter_clone/features/auth/view/login_view.dart';
@@ -7,7 +8,7 @@ import 'package:twitter_clone/features/auth/widgets/auth_field.dart';
 import 'package:twitter_clone/theme/theme.dart';
 
 // SignUp Screen
-class SignUpView extends StatefulWidget {
+class SignUpView extends ConsumerStatefulWidget {
   // to navigate to the SignUp Screen
   static route() => MaterialPageRoute(
         builder: (context) => const SignUpView(),
@@ -16,10 +17,10 @@ class SignUpView extends StatefulWidget {
   const SignUpView({Key? key}) : super(key: key);
 
   @override
-  State<SignUpView> createState() => _SignUpViewState();
+  ConsumerState<SignUpView> createState() => _SignUpViewState();
 }
 
-class _SignUpViewState extends State<SignUpView> {
+class _SignUpViewState extends ConsumerState<SignUpView> {
   // to make sure appbar is not rebuilt when the screen is rebuilt
   final appbar = UIConstants.appBar();
 
