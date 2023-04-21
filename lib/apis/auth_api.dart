@@ -1,10 +1,18 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart' as model;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:twitter_clone/core/core.dart';
 
 // to signup, use Account from appwrite.dart (to get user accounts)
 // to access user related data, use Account from models.dart
+
+final authAPIProvider = Provider((ref) {
+  // the account will come from the appwriteAccountProvider
+  // it will watch any changes that will happen to appwriteAccountProvider
+  final account = ref.watch(appwriteAccountProvider);
+  return AuthAPI(account: account);
+});
 
 // interface for the AuthAPI class
 abstract class IAuthAPI {
@@ -39,7 +47,8 @@ class AuthAPI implements IAuthAPI {
       return right(account);
     } on AppwriteException catch (e, stackTrace) {
       return left(
-        Failure(e.message ?? 'Some unexpected error occurred', stackTrace),);
+        Failure(e.message ?? 'Some unexpected error occurred', stackTrace),
+      );
     } catch (e, stackTrace) {
       // left() means datatype from the left side of Either
       return left(
