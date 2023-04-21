@@ -8,3 +8,5 @@ import 'package:twitter_clone/core/failure.dart';
 // FutureEither will return the data type Failure when there is a failure
 // FutureEither will return the appropriate data type when there is a success
 typedef FutureEither<T> = Future<Either<Failure, T>>;
+// FutureEitherVoid will return nothing when there is a success
+typedef FutureEitherVoid = FutureEither<void>;
