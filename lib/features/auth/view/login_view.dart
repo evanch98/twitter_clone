@@ -43,8 +43,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 const SizedBox(
                   height: 25,
-                ),
-                // space between the two text fields
+                ), // space between the two text fields
                 // Password TextField
                 AuthField(
                   controller: passwordController,
@@ -52,11 +51,14 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 const SizedBox(
                   height: 40,
-                ),
-                // space between the two widgets
-                RoundedSmallButton(
-                  onTap: () {},
-                  label: "Done",
+                ), // space between the two widgets
+                Align(
+                  // to align the widget to the right side of the screen
+                  alignment: Alignment.topRight,
+                  child: RoundedSmallButton(
+                    onTap: () {},
+                    label: "Done",
+                  ),
                 ),
               ],
             ),
