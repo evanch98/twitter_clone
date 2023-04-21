@@ -81,7 +81,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                   // to align the widget to the right side of the screen
                   alignment: Alignment.topRight,
                   child: RoundedSmallButton(
-                    onTap: () {},
+                    onTap: onSignUp,
                     label: "Done",
                   ),
                 ),
