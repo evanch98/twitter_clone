@@ -5,9 +5,12 @@ import 'package:twitter_clone/constants/constants.dart';
 import 'package:twitter_clone/features/auth/widgets/auth_field.dart';
 import 'package:twitter_clone/theme/theme.dart';
 
-
 // SignUp Screen
 class SignUpView extends StatefulWidget {
+  static route() => MaterialPageRoute(
+        builder: (context) => const SignUpView(),
+      );
+
   const SignUpView({Key? key}) : super(key: key);
 
   @override
@@ -101,7 +104,7 @@ class _SignUpViewState extends State<SignUpView> {
           ),
         ),
       ),
-    );;
+    );
+    ;
   }
 }
-

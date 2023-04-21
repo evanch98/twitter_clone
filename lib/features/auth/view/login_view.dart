@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:twitter_clone/common/common.dart';
@@ -7,6 +9,10 @@ import 'package:twitter_clone/theme/theme.dart';
 
 // Login Screen
 class LoginView extends StatefulWidget {
+  static route() => MaterialPageRoute(
+        builder: (context) => const LoginView(),
+      );
+
   const LoginView({Key? key}) : super(key: key);
 
   @override
