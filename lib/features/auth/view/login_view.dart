@@ -9,6 +9,7 @@ import 'package:twitter_clone/theme/theme.dart';
 
 // Login Screen
 class LoginView extends StatefulWidget {
+  // to navigate to the Login Screen
   static route() => MaterialPageRoute(
         builder: (context) => const LoginView(),
       );

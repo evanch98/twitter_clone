@@ -7,6 +7,7 @@ import 'package:twitter_clone/theme/theme.dart';
 
 // SignUp Screen
 class SignUpView extends StatefulWidget {
+  // to navigate to the SignUp Screen
   static route() => MaterialPageRoute(
         builder: (context) => const SignUpView(),
       );
