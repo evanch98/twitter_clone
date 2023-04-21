@@ -37,6 +37,9 @@ class AuthAPI implements IAuthAPI {
       );
       // right() means datatype from the right side of Either
       return right(account);
+    } on AppwriteException catch (e, stackTrace) {
+      return left(
+        Failure(e.message ?? 'Some unexpected error occurred', stackTrace),);
     } catch (e, stackTrace) {
       // left() means datatype from the left side of Either
       return left(
