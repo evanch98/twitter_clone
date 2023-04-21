@@ -16,6 +16,14 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appbar,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20,),
+          child: Column(
+
+          ),
+        ),
+      ),
     );
   }
 }
