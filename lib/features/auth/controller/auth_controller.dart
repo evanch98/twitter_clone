@@ -8,7 +8,7 @@ import 'package:twitter_clone/core/core.dart';
 // the second one is the datatype provided to the StateNotifier
 final authControllerProvider =
     StateNotifierProvider<AuthController, bool>((ref) {
-      final authAPI = ref.watch(authAPIProvider);
+  final authAPI = ref.watch(authAPIProvider);
   return AuthController(authAPI: authAPI);
 });
 
