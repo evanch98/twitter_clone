@@ -61,4 +61,27 @@ class AuthAPI implements IAuthAPI {
       );
     }
   }
+
+  @override
+  FutureEither<model.Session> login({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      // create an email session
+      final account = await _account.createEmailSession(
+        email: email,
+        password: password,
+      );
+      return right(account);
+    } on AppwriteException catch (e, stackTrace) {
+      return left(
+        Failure(e.message ?? 'Some unexpected error occurred', stackTrace),
+      );
+    } catch (e, stackTrace) {
+      return left(
+        Failure(e.toString(), stackTrace),
+      );
+    }
+  }
 }
