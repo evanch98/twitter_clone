@@ -69,11 +69,11 @@ class AuthAPI implements IAuthAPI {
   }) async {
     try {
       // create an email session
-      final account = await _account.createEmailSession(
+      final session = await _account.createEmailSession(
         email: email,
         password: password,
       );
-      return right(account);
+      return right(session);
     } on AppwriteException catch (e, stackTrace) {
       return left(
         Failure(e.message ?? 'Some unexpected error occurred', stackTrace),
