@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/common/common.dart';
+import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
 import 'package:twitter_clone/features/auth/view/signup_view.dart';
 import 'package:twitter_clone/theme/theme.dart';
 
@@ -15,7 +17,11 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme.theme,
-      home: const SignUpView(),
+      home: ref.watch(currentUserAccountProvider).when(
+            data: (user) {},
+            error: (error, st) {},
+            loading: () => const LoadingPage(),
+          ),
     );
   }
 }
