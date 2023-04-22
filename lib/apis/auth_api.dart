@@ -27,6 +27,9 @@ abstract class IAuthAPI {
     required String email,
     required String password,
   });
+
+  // current user account which can be null
+  Future<model.Account?> currentUserAccount();
 }
 
 class AuthAPI implements IAuthAPI {
@@ -34,6 +37,22 @@ class AuthAPI implements IAuthAPI {
   // the last part assign the named variable from the constructor to the private
   // variable
   AuthAPI({required Account account}) : _account = account;
+
+  @override
+  Future<model.Account?> currentUserAccount() async {
+    try {
+      // if _account.get() has some values, it means that the user is logged in
+      // return the account
+      return _account.get();
+    } on AppwriteException catch (e, stackTract) {
+      // if _account.get() does not have any value, it means that the user is
+      // not logged in
+      // return null
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
 
   @override
   FutureEither<model.Account> signUp({
