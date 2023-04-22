@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/apis/auth_api.dart';
 import 'package:twitter_clone/core/core.dart';
+import 'package:twitter_clone/features/auth/view/login_view.dart';
 
 // we need to explicitly provide the type for the StateNotifierProvider
 // the first one is the datatype it is going to return
@@ -38,7 +39,12 @@ class AuthController extends StateNotifier<bool> {
     res.fold(
       // since l = left = Failure datatype, we can use the message field
       (l) => showSnackBar(context, l.message),
-      (r) => print(r.email),
+      (r) {
+        // if the account is created successfully, it will show the confirmation
+        // message and navigate to the LoginView
+        showSnackBar(context, "Account has been created! Please login");
+        Navigator.push(context, LoginView.route());
+      },
     );
   }
 
