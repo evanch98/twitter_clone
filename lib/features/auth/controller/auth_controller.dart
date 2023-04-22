@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/apis/auth_api.dart';
 import 'package:twitter_clone/core/core.dart';
 import 'package:twitter_clone/features/auth/view/login_view.dart';
+import 'package:twitter_clone/features/home/view/home_view.dart';
 
 // we need to explicitly provide the type for the StateNotifierProvider
 // the first one is the datatype it is going to return
@@ -61,7 +62,10 @@ class AuthController extends StateNotifier<bool> {
     state = false; // then the state is finished loading
     res.fold(
       (l) => showSnackBar(context, l.message),
-      (r) => print(r.userId),
+      (r) {
+        // after logging in successfully, navigate to the HomeView
+        Navigator.push(context, HomeView.route());
+      },
     );
   }
 }
