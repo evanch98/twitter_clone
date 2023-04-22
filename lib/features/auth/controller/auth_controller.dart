@@ -33,6 +33,7 @@ class AuthController extends StateNotifier<bool> {
       email: email,
       password: password,
     );
+    state = false; // then the state is finished loading
     // the fold method is from Either (l = left, r = right)
     res.fold(
       // since l = left = Failure datatype, we can use the message field
