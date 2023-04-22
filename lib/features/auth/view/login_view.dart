@@ -1,13 +1,15 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/common/common.dart';
 import 'package:twitter_clone/constants/constants.dart';
+import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
 import 'package:twitter_clone/features/auth/view/signup_view.dart';
 import 'package:twitter_clone/features/auth/widgets/auth_field.dart';
 import 'package:twitter_clone/theme/theme.dart';
 
 // Login Screen
-class LoginView extends StatefulWidget {
+class LoginView extends ConsumerStatefulWidget {
   // to navigate to the Login Screen
   static route() => MaterialPageRoute(
         builder: (context) => const LoginView(),
@@ -16,10 +18,10 @@ class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  ConsumerState<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _LoginViewState extends ConsumerState<LoginView> {
   // to make sure appbar is not rebuilt when the screen is rebuilt
   final appbar = UIConstants.appBar();
 
@@ -34,6 +36,14 @@ class _LoginViewState extends State<LoginView> {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+  }
+
+  void onLogin() {
+    ref.read(authControllerProvider.notifier).login(
+          email: emailController.text,
+          password: passwordController.text,
+          context: context,
+        );
   }
 
   @override
@@ -71,7 +81,7 @@ class _LoginViewState extends State<LoginView> {
                   // to align the widget to the right side of the screen
                   alignment: Alignment.topRight,
                   child: RoundedSmallButton(
-                    onTap: () {},
+                    onTap: onLogin,
                     label: "Done",
                   ),
                 ),
