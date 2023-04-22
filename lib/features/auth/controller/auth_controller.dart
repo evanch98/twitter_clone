@@ -17,6 +17,13 @@ final authControllerProvider =
   return AuthController(authAPI: authAPI);
 });
 
+// currentUserAccountProvider will return the currentUser
+// it will watch any changes that will happen to the authControllerProvider
+final currentUserAccountProvider = FutureProvider((ref) {
+  final authController = ref.watch(authControllerProvider.notifier);
+  return authController.currentUser();
+});
+
 // AuthController
 class AuthController extends StateNotifier<bool> {
   final AuthAPI _authAPI;
