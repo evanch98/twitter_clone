@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:appwrite/models.dart' as model;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/apis/auth_api.dart';
+import 'package:twitter_clone/apis/apis.dart';
 import 'package:twitter_clone/core/core.dart';
 import 'package:twitter_clone/features/auth/view/login_view.dart';
 import 'package:twitter_clone/features/home/view/home_view.dart';
@@ -14,7 +14,8 @@ import 'package:twitter_clone/features/home/view/home_view.dart';
 final authControllerProvider =
     StateNotifierProvider<AuthController, bool>((ref) {
   final authAPI = ref.watch(authAPIProvider);
-  return AuthController(authAPI: authAPI);
+  final userAPI = ref.watch(userAPIProvider);
+  return AuthController(authAPI: authAPI, userAPI: userAPI);
 });
 
 // currentUserAccountProvider will return the currentUser
@@ -27,10 +28,12 @@ final currentUserAccountProvider = FutureProvider((ref) {
 // AuthController
 class AuthController extends StateNotifier<bool> {
   final AuthAPI _authAPI;
+  final UserAPI _userAPI;
 
   // the type of StateNotifier is set to bool to set the state isLoading or not
-  AuthController({required AuthAPI authAPI})
+  AuthController({required AuthAPI authAPI, required UserAPI userAPI})
       : _authAPI = authAPI,
+        _userAPI = userAPI,
         super(false);
 
   // return the current user account if the user is logged in else null
