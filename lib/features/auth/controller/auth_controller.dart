@@ -5,6 +5,7 @@ import 'package:twitter_clone/apis/apis.dart';
 import 'package:twitter_clone/core/core.dart';
 import 'package:twitter_clone/features/auth/view/login_view.dart';
 import 'package:twitter_clone/features/home/view/home_view.dart';
+import 'package:twitter_clone/models/models.dart';
 
 // we need to explicitly provide the type for the StateNotifierProvider
 // the first one is the datatype it is going to return
@@ -54,11 +55,27 @@ class AuthController extends StateNotifier<bool> {
     res.fold(
       // since l = left = Failure datatype, we can use the message field
       (l) => showSnackBar(context, l.message),
-      (r) {
-        // if the account is created successfully, it will show the confirmation
-        // message and navigate to the LoginView
-        showSnackBar(context, "Account has been created! Please login");
-        Navigator.push(context, LoginView.route());
+      (r) async {
+        // create a userModel to be stored in the appwrite database
+        UserModel userModel = UserModel(
+          email: email,
+          name: getNameFromEmail(email),
+          followers: const [],
+          following: const [],
+          profilePic: "",
+          bannerPic: "",
+          uid: "",
+          bio: "",
+          isTwitterBlue: false,
+        );
+        // save the user model to the appwrite database upon signing up
+        final res2 = await _userAPI.saveUserData(userModel); // response from the saveUserData
+        res2.fold((l) => showSnackBar(context, l.message), (r) {
+          // if the account is created successfully and stored in the database,
+          // it will show the confirmation message and navigate to the LoginView
+          showSnackBar(context, "Account has been created! Please login");
+          Navigator.push(context, LoginView.route());
+        });
       },
     );
   }
