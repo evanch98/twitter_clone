@@ -10,7 +10,7 @@ class UserModel {
   final String bannerPic;
   final String uid;
   final String bio;
-  final String isTwitterBlue;
+  final bool isTwitterBlue;
 
 //<editor-fold desc="Data Methods">
   const UserModel({
@@ -66,7 +66,7 @@ class UserModel {
     String? bannerPic,
     String? uid,
     String? bio,
-    String? isTwitterBlue,
+    bool? isTwitterBlue,
   }) {
     return UserModel(
       email: email ?? this.email,
@@ -106,7 +106,7 @@ class UserModel {
       // appwrite stores the id as $id
       uid: map['\$id'] as String,
       bio: map['bio'] as String,
-      isTwitterBlue: map['isTwitterBlue'] as String,
+      isTwitterBlue: map['isTwitterBlue'] as bool,
     );
   }
 
