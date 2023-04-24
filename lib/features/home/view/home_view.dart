@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/constants/constants.dart';
 
 class HomeView extends StatefulWidget {
   static route() => MaterialPageRoute(
@@ -13,8 +14,12 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final appBar = UIConstants.appBar();
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: appBar,
+    );
   }
 }
