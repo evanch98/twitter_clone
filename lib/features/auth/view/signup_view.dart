@@ -128,6 +128,5 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
               ),
             ),
     );
-    ;
   }
 }
