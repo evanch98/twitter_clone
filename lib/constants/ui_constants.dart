@@ -24,5 +24,5 @@ class UIConstants {
     Text("Feed Screen"),
     Text("Search Screen"),
     Text("Notification Screen"),
-  ]
+  ];
 }
