@@ -39,6 +39,7 @@ class _HomeViewState extends State<HomeView> {
         child: const Icon(
           Icons.add,
           color: Pallete.whiteColor,
+          size: 28,
         ),
       ),
       bottomNavigationBar: CupertinoTabBar(
