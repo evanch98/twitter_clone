@@ -43,8 +43,8 @@ class AuthAPI implements IAuthAPI {
     try {
       // if _account.get() has some values, it means that the user is logged in
       // return the account
-      return _account.get();
-    } on AppwriteException catch (e, stackTract) {
+      return await _account.get();
+    } on AppwriteException {
       // if _account.get() does not have any value, it means that the user is
       // not logged in
       // return null
