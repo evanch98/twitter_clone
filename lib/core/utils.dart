@@ -10,3 +10,9 @@ void showSnackBar(BuildContext context, String content) {
     ),
   );
 }
+
+// extract the name from the given email
+String getNameFromEmail(String email) {
+  // joebloggs@email.com will return joebloggs
+  return email.split("@")[0];
+}
