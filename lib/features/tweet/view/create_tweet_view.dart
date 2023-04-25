@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CreateTweetScreen extends ConsumerStatefulWidget {
+  static route() => MaterialPageRoute(
+        builder: (context) => const CreateTweetScreen(),
+      );
+
   const CreateTweetScreen({
     Key? key,
   }) : super(key: key);
