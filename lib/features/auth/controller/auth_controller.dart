@@ -33,6 +33,7 @@ final userDetailsProvider = FutureProvider.family((ref, String uid) {
   return authController.getUserData(uid);
 });
 
+// currentUserDetailsProvider will return the current user's details
 final currentUserDetailsProvider = FutureProvider((ref) {
   final currentUserId  = ref.watch(currentUserAccountProvider).value!.$id;
   final userDetails = ref.watch(userDetailsProvider(currentUserId));
