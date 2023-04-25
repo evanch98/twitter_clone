@@ -1,6 +1,8 @@
 // this file is for the utility functions
+import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 // the show snackBar utility function
 void showSnackBar(BuildContext context, String content) {
@@ -15,4 +17,17 @@ void showSnackBar(BuildContext context, String content) {
 String getNameFromEmail(String email) {
   // joebloggs@email.com will return joebloggs
   return email.split("@")[0];
+}
+
+// to pick multiple images, File is from the dart:io
+Future<List<File>> pickImages() async {
+  List<File> images = [];
+  final ImagePicker picker = ImagePicker();
+  final imageFiles = await picker.pickMultiImage();
+  if (imageFiles.isNotEmpty) {
+    for (final image in imageFiles) {
+      images.add(File(image.path));
+    }
+  }
+  return images;
 }
