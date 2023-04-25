@@ -20,6 +20,7 @@ class CreateTweetScreen extends ConsumerStatefulWidget {
 class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
   @override
   Widget build(BuildContext context) {
+    // store the current user's details
     final currentUser = ref.watch(currentUserAccountProvider).value;
 
     return Scaffold(
