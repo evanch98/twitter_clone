@@ -21,7 +21,7 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
   @override
   Widget build(BuildContext context) {
     // store the current user's details
-    final currentUser = ref.watch(currentUserAccountProvider).value;
+    final currentUser = ref.watch(currentUserDetailsProvider).value;
 
     return Scaffold(
       appBar: AppBar(
@@ -41,6 +41,23 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
           ),
         ],
       ),
+      body: currentUser == null
+          ? const Loader()
+          : SafeArea(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundImage: NetworkImage(currentUser.profilePic),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
     );
   }
 }
