@@ -17,6 +17,16 @@ class CreateTweetScreen extends ConsumerStatefulWidget {
 class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.close,
+            size: 30,
+          ),
+        ),
+      ),
+    );
   }
 }
