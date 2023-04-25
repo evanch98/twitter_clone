@@ -26,6 +26,13 @@ final currentUserAccountProvider = FutureProvider((ref) {
   return authController.currentUser();
 });
 
+// userDetailsProvider is a reusable provider that returns the user data for the
+// the given uid
+final userDetailsProvider = FutureProvider.family((ref, String uid) {
+  final authController = ref.watch(authControllerProvider.notifier);
+  return authController.getUserData(uid);
+});
+
 // AuthController
 class AuthController extends StateNotifier<bool> {
   final AuthAPI _authAPI;
