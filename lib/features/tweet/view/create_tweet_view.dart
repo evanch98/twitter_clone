@@ -88,36 +88,47 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
                 ),
               ),
             ),
-      bottomNavigationBar: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0).copyWith(
-              left: 15,
-              right: 15,
-            ),
-            child: SvgPicture.asset(
-              AssetsConstants.galleryIcon,
-            ),
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.only(bottom: 10),
+        decoration: const BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              color: Pallete.greyColor,
+              width: 0.3,
+            )
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0).copyWith(
-              left: 15,
-              right: 15,
+        ),
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0).copyWith(
+                left: 15,
+                right: 15,
+              ),
+              child: SvgPicture.asset(
+                AssetsConstants.galleryIcon,
+              ),
             ),
-            child: SvgPicture.asset(
-              AssetsConstants.gifIcon,
+            Padding(
+              padding: const EdgeInsets.all(8.0).copyWith(
+                left: 15,
+                right: 15,
+              ),
+              child: SvgPicture.asset(
+                AssetsConstants.gifIcon,
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0).copyWith(
-              left: 15,
-              right: 15,
+            Padding(
+              padding: const EdgeInsets.all(8.0).copyWith(
+                left: 15,
+                right: 15,
+              ),
+              child: SvgPicture.asset(
+                AssetsConstants.emojiIcon,
+              ),
             ),
-            child: SvgPicture.asset(
-              AssetsConstants.emojiIcon,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
