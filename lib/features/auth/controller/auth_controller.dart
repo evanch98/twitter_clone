@@ -33,6 +33,12 @@ final userDetailsProvider = FutureProvider.family((ref, String uid) {
   return authController.getUserData(uid);
 });
 
+final currentUserDetailsProvider = FutureProvider((ref) {
+  final currentUserId  = ref.watch(currentUserAccountProvider).value!.$id;
+  final userDetails = ref.watch(userDetailsProvider(currentUserId));
+  return userDetails.value;
+});
+
 // AuthController
 class AuthController extends StateNotifier<bool> {
   final AuthAPI _authAPI;
