@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -95,6 +96,18 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
                         )
                       ],
                     ),
+                    if (images.isNotEmpty)
+                      CarouselSlider(
+                        items: images.map(
+                          (file) {
+                            return Image.file(file);
+                          },
+                        ).toList(),
+                        options: CarouselOptions(
+                          height: 400,
+                          enableInfiniteScroll: false,
+                        ),
+                      )
                   ],
                 ),
               ),
@@ -103,11 +116,10 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
         padding: const EdgeInsets.only(bottom: 10),
         decoration: const BoxDecoration(
           border: Border(
-            top: BorderSide(
-              color: Pallete.greyColor,
-              width: 0.3,
-            )
-          ),
+              top: BorderSide(
+            color: Pallete.greyColor,
+            width: 0.3,
+          )),
         ),
         child: Row(
           children: [
