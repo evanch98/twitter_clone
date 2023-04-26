@@ -105,7 +105,6 @@ class Tweet {
       'tweetedAt': tweetedAt,
       'likes': likes,
       'commentIds': commentIds,
-      'id': id,
       'reshareCount': reshareCount,
     };
   }
