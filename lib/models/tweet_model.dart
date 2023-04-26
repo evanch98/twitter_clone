@@ -102,7 +102,7 @@ class Tweet {
       'imageLinks': imageLinks,
       'uid': uid,
       'tweetType': tweetType.type,
-      'tweetedAt': tweetedAt,
+      'tweetedAt': tweetedAt.millisecondsSinceEpoch,
       'likes': likes,
       'commentIds': commentIds,
       'reshareCount': reshareCount,
