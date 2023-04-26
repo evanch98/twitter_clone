@@ -21,7 +21,7 @@ class TweetAPI implements ITweetAPI {
       final document = await _db.createDocument(
         databaseId: AppwriteConstants.databaseId,
         collectionId: AppwriteConstants.tweetsCollection,
-        documentId: ID.unique(),
+        documentId: ID.unique(),  // every tweet should have an unique id
         data: tweet.toMap(),
       );
       return right(document);
