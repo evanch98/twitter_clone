@@ -105,6 +105,7 @@ class TweetController extends StateNotifier<bool> {
   // to extract hashtags from the given text
   List<String> _getHashtagsFromText(String text) {
     List<String> hashtags = [];
+    // change the newline character and the tab character to the space character
     List<String> wordsInSentence =
         text.replaceAll("\n", " ").replaceAll("\t", " ").split(" ");
     // if a word starts with #, assume that the word is a hashtag
