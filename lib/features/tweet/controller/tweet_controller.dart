@@ -61,4 +61,17 @@ class TweetController extends StateNotifier<bool> {
     }
     return link;
   }
+
+  // to extract hashtags from the given text
+  List<String> _getHashtagsFromText(String text) {
+    List<String> hashtags = [];
+    List<String> wordsInSentence = text.split(" ");
+    // if a word starts with #, assume that the word is a hashtag
+    for (String word in wordsInSentence) {
+      if (word.startsWith("#")) {
+        hashtags.add(word);
+      }
+    }
+    return hashtags;
+  }
 }
