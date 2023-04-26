@@ -3,9 +3,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/core/core.dart';
+import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
+import 'package:twitter_clone/models/models.dart';
 
 class TweetController extends StateNotifier<bool> {
-  TweetController() : super(false);
+  final Ref _ref; // to get access to the provider in this case
+  TweetController({required Ref ref})
+      : _ref = ref,
+        super(false);
 
   void shareTweet({
     required List<File> images,
@@ -45,7 +50,26 @@ class TweetController extends StateNotifier<bool> {
   void _shareTextTweet({
     required String text,
     required BuildContext context,
-  }) {}
+  }) {
+    state = true;
+    final hashtags = _getHashtagsFromText(text);
+    final link = _getLinkFromText(text);
+    final user = _ref.read(currentUserDetailsProvider).value!; // current user's details
+
+    Tweet(
+      text: text,
+      link: link,
+      hashtags: hashtags,
+      imageLinks: [],
+      uid: user.uid,
+      tweetType: TweetType.text,
+      tweetedAt: DateTime.now(),
+      likes: [],
+      commentIds: [],
+      id: '',
+      reshareCount: 0,
+    );
+  }
 
   // to extract link from the given text
   String _getLinkFromText(String text) {
