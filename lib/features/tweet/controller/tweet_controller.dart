@@ -46,4 +46,19 @@ class TweetController extends StateNotifier<bool> {
     required String text,
     required BuildContext context,
   }) {}
+
+  // to extract link from the given text
+  String _getLinkFromText(String text) {
+    String link = "";
+    List<String> wordsInSentence = text.split(" ");
+    for (String word in wordsInSentence) {
+      // if a word starts with any of these, assume that the word is a link
+      if (word.startsWith("https://") ||
+          word.startsWith("http://") ||
+          word.startsWith("www.")) {
+        link = word;
+      }
+    }
+    return link;
+  }
 }
