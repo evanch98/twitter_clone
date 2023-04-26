@@ -120,7 +120,8 @@ class Tweet {
       tweetedAt: map['tweetedAt'] as DateTime,
       likes: map['likes'] as List<String>,
       commentIds: map['commentIds'] as List<String>,
-      id: map['id'] as String,
+      // appwrite stores the id as $id
+      id: map['\$id'] as String,
       reshareCount: map['reshareCount'] as int,
     );
   }
