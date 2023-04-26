@@ -2,14 +2,20 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/apis/apis.dart';
 import 'package:twitter_clone/core/core.dart';
 import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
 import 'package:twitter_clone/models/models.dart';
 
 class TweetController extends StateNotifier<bool> {
   final Ref _ref; // to get access to the provider in this case
-  TweetController({required Ref ref})
-      : _ref = ref,
+  final TweetAPI _tweetAPI;
+
+  TweetController({
+    required Ref ref,
+    required TweetAPI tweetAPI,
+  })  : _ref = ref,
+        _tweetAPI = tweetAPI,
         super(false);
 
   void shareTweet({
@@ -54,7 +60,8 @@ class TweetController extends StateNotifier<bool> {
     state = true;
     final hashtags = _getHashtagsFromText(text);
     final link = _getLinkFromText(text);
-    final user = _ref.read(currentUserDetailsProvider).value!; // current user's details
+    final user =
+        _ref.read(currentUserDetailsProvider).value!; // current user's details
 
     Tweet(
       text: text,
