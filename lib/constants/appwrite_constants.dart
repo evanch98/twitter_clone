@@ -4,4 +4,5 @@ class AppwriteConstants {
   static const String endPoint = 'http://localhost:80/v1';  // localhost port 80
 
   static const String usersCollection = '644550ab7e2edb94d48b';  // appwrite usersCollection from database Id
+  static const String tweetsCollection = '64495bb46b4f145c1af6'; // appwrite tweetsCollection from database Id
 }
