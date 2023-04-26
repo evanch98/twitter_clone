@@ -83,7 +83,7 @@ class TweetController extends StateNotifier<bool> {
       reshareCount: 0,
     );
     final res = await _tweetAPI.shareTweet(tweet);
-    state = false;  // then the state is finished loading
+    state = false; // then the state is finished loading
     res.fold((l) => showSnackBar(context, l.message), (r) => null);
   }
 
@@ -105,7 +105,8 @@ class TweetController extends StateNotifier<bool> {
   // to extract hashtags from the given text
   List<String> _getHashtagsFromText(String text) {
     List<String> hashtags = [];
-    List<String> wordsInSentence = text.split(" ");
+    List<String> wordsInSentence =
+        text.replaceAll("\n", " ").replaceAll("\t", " ").split(" ");
     // if a word starts with #, assume that the word is a hashtag
     for (String word in wordsInSentence) {
       if (word.startsWith("#")) {
