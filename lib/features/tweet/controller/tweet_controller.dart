@@ -56,26 +56,28 @@ class TweetController extends StateNotifier<bool> {
   void _shareTextTweet({
     required String text,
     required BuildContext context,
-  }) {
+  }) async {
     state = true;
     final hashtags = _getHashtagsFromText(text);
     final link = _getLinkFromText(text);
     final user =
         _ref.read(currentUserDetailsProvider).value!; // current user's details
 
-    Tweet(
+    Tweet tweet = Tweet(
       text: text,
       link: link,
       hashtags: hashtags,
-      imageLinks: [],
+      imageLinks: const [],
       uid: user.uid,
       tweetType: TweetType.text,
       tweetedAt: DateTime.now(),
-      likes: [],
-      commentIds: [],
+      likes: const [],
+      commentIds: const [],
       id: '',
       reshareCount: 0,
     );
+    final res = await _tweetAPI.shareTweet(tweet);
+    res.fold((l) => showSnackBar(context, l.message), (r) => null);
   }
 
   // to extract link from the given text
