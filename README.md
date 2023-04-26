@@ -4,3 +4,6 @@ A Twitter clone app for android and iOS devices.
 
 # Goals
 - To showcase my knowledge of Flutter and Dart
+
+# Key Features
+- User authentication using Appwrite authentication
