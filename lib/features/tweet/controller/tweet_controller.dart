@@ -83,6 +83,7 @@ class TweetController extends StateNotifier<bool> {
       reshareCount: 0,
     );
     final res = await _tweetAPI.shareTweet(tweet);
+    state = false;  // then the state is finished loading
     res.fold((l) => showSnackBar(context, l.message), (r) => null);
   }
 
