@@ -5,6 +5,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/constants/constants.dart';
 import 'package:twitter_clone/core/core.dart';
 
+final storageAPIProvider = Provider((ref) {
+  final storage = ref.watch(appwriteStorageProvider);
+  return StorageAPI(storage: storage);
+});
+
 class StorageAPI {
   final Storage _storage;
 
