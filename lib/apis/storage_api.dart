@@ -23,7 +23,9 @@ class StorageAPI {
         fileId: ID.unique(),
         file: InputFile.fromPath(path: file.path),
       );
-      imageLinks.add(uploadedImage.$id);
+      imageLinks.add(
+        AppwriteConstants.imageUrl(uploadedImage.$id),
+      );
     }
     return imageLinks;
   }
