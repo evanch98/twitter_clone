@@ -14,6 +14,7 @@ final tweetAPIProvider = Provider((ref) {
 // interface for the TweetAPI class
 abstract class ITweetAPI {
   FutureEither<model.Document> shareTweet(Tweet tweet);
+
   Future<List<model.Document>> getTweet();
 }
 
@@ -28,7 +29,7 @@ class TweetAPI implements ITweetAPI {
       final document = await _db.createDocument(
         databaseId: AppwriteConstants.databaseId,
         collectionId: AppwriteConstants.tweetsCollection,
-        documentId: ID.unique(),  // every tweet should have an unique id
+        documentId: ID.unique(), // every tweet should have an unique id
         data: tweet.toMap(),
       );
       return right(document);
@@ -40,9 +41,16 @@ class TweetAPI implements ITweetAPI {
         ),
       );
     } catch (e, st) {
-      return left(
-        Failure(e.toString(), st)
-      );
+      return left(Failure(e.toString(), st));
     }
+  }
+
+  @override
+  Future<List<model.Document>> getTweet() async {
+    final document = await _db.listDocuments(
+      databaseId: AppwriteConstants.databaseId,
+      collectionId: AppwriteConstants.tweetsCollection,
+    );
+    return document.documents;
   }
 }
