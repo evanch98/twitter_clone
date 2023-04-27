@@ -32,6 +32,12 @@ class TweetController extends StateNotifier<bool> {
         _storageAPI = storageAPI,
         super(false);
 
+  Future<List<Tweet>> getTweets() async {
+    final tweetList = await _tweetAPI.getTweets();
+    // to convert every item in the tweetList into a Tweet model
+    return tweetList.map((tweet) => Tweet.fromMap(tweet.data)).toList();
+  }
+
   void shareTweet({
     required List<File> images,
     required String text,
