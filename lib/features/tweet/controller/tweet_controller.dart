@@ -10,7 +10,12 @@ import 'package:twitter_clone/models/models.dart';
 final tweetControllerProvider =
     StateNotifierProvider<TweetController, bool>((ref) {
   final tweetAPI = ref.watch(tweetAPIProvider);
-  return TweetController(ref: ref, tweetAPI: tweetAPI);
+  final storageAPI = ref.watch(storageAPIProvider);
+  return TweetController(
+    ref: ref,
+    tweetAPI: tweetAPI,
+    storageAPI: storageAPI,
+  );
 });
 
 class TweetController extends StateNotifier<bool> {
