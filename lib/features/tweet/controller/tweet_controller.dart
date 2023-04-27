@@ -18,6 +18,11 @@ final tweetControllerProvider =
   );
 });
 
+final getTweetsProvider = FutureProvider((ref) {
+  final tweetController = ref.watch(tweetControllerProvider.notifier);
+  return tweetController.getTweets();
+});
+
 class TweetController extends StateNotifier<bool> {
   final Ref _ref; // to get access to the provider in this case
   final TweetAPI _tweetAPI;
