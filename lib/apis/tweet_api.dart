@@ -14,6 +14,7 @@ final tweetAPIProvider = Provider((ref) {
 // interface for the TweetAPI class
 abstract class ITweetAPI {
   FutureEither<model.Document> shareTweet(Tweet tweet);
+  Future<List<model.Document>> getTweet();
 }
 
 class TweetAPI implements ITweetAPI {
