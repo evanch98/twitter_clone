@@ -4,6 +4,7 @@ import 'package:twitter_clone/common/common.dart';
 import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
 import 'package:twitter_clone/models/models.dart';
 import 'package:twitter_clone/theme/theme.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class TweetCard extends ConsumerWidget {
   final Tweet tweet;
@@ -48,7 +49,7 @@ class TweetCard extends ConsumerWidget {
                               ),
                             ),
                             Text(
-                              "@${user.name}",
+                              "@${user.name} · ${timeago.format(tweet.tweetedAt)}",
                               style: const TextStyle(
                                 color: Pallete.greyColor,
                                 fontSize: 17,
