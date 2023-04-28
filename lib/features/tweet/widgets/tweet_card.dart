@@ -26,6 +26,7 @@ class TweetCard extends ConsumerWidget {
                       backgroundImage: NetworkImage(
                         user.profilePic,
                       ),
+                      radius: 30,
                     )
                   ],
                 ),
