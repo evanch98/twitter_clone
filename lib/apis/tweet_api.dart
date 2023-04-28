@@ -58,6 +58,9 @@ class TweetAPI implements ITweetAPI {
     final document = await _db.listDocuments(
       databaseId: AppwriteConstants.databaseId,
       collectionId: AppwriteConstants.tweetsCollection,
+      queries: [
+        Query.orderDesc('tweetedAt'),
+      ],
     );
     return document.documents;
   }
