@@ -87,6 +87,7 @@ class TweetCard extends ConsumerWidget {
                               right: 20,
                             ),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 TweetIconButton(
                                   pathName: AssetsConstants.viewsIcon,
