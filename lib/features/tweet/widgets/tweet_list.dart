@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/common/common.dart';
+import 'package:twitter_clone/features/tweet/controller/tweet_controller.dart';
 
 class TweetList extends ConsumerWidget {
   const TweetList({
@@ -8,6 +10,10 @@ class TweetList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Container();
+    return ref.watch(getTweetsProvider).when(
+          data: (data) {},
+          error: (error, st) {},
+          loading: () => const Loader(),
+        );
   }
 }
