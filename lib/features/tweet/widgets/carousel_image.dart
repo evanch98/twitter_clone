@@ -19,6 +19,7 @@ class _CarouselImageState extends State<CarouselImage> {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.center,
       children: [
         Column(
           children: [
@@ -26,7 +27,9 @@ class _CarouselImageState extends State<CarouselImage> {
               items: widget.imageLinks.map(
                 (link) {
                   return Container(
-                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
                     margin: const EdgeInsets.all(10),
                     child: Image.network(
                       link,
@@ -37,7 +40,13 @@ class _CarouselImageState extends State<CarouselImage> {
               ).toList(),
               options: CarouselOptions(
                 height: 400,
+                viewportFraction: 1,
                 enableInfiniteScroll: false,
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    _current = index;
+                  });
+                }
               ),
             ),
           ],
