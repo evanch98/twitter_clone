@@ -131,8 +131,11 @@ class TweetCard extends ConsumerWidget {
                     ),
                   ],
                 ),
-                const Divider(
-                  color: Pallete.greyColor,
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  child: Divider(
+                    color: Pallete.greyColor,
+                  ),
                 ),
               ],
             );
