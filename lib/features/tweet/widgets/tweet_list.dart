@@ -11,8 +11,18 @@ class TweetList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ref.watch(getTweetsProvider).when(
-          data: (data) {},
-          error: (error, st) {},
+          data: (tweets) {
+            return ListView.builder(
+              itemCount: tweets.length,
+              itemBuilder: (BuildContext context, int index) {
+                final tweet = tweets[index];
+                return Text(tweet.text);
+              },
+            );
+          },
+          error: (error, st) => ErrorText(
+            error: error.toString(),
+          ),
           loading: () => const Loader(),
         );
   }
