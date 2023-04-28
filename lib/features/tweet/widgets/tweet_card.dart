@@ -26,6 +26,7 @@ class TweetCard extends ConsumerWidget {
             return Column(
               children: [
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
                       margin: const EdgeInsets.all(10),
