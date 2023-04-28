@@ -13,7 +13,7 @@ import 'package:twitter_clone/models/models.dart';
 // if there is no datatype for the StateNotifier, the second one should be the
 // dynamic datatype
 final authControllerProvider =
-    StateNotifierProvider<AuthController, bool>((ref) {
+    StateNotifierProvider.autoDispose<AuthController, bool>((ref) {
   final authAPI = ref.watch(authAPIProvider);
   final userAPI = ref.watch(userAPIProvider);
   return AuthController(authAPI: authAPI, userAPI: userAPI);
@@ -21,20 +21,20 @@ final authControllerProvider =
 
 // currentUserAccountProvider will return the currentUser
 // it will watch any changes that will happen to the authControllerProvider
-final currentUserAccountProvider = FutureProvider((ref) {
+final currentUserAccountProvider = FutureProvider.autoDispose((ref) {
   final authController = ref.watch(authControllerProvider.notifier);
   return authController.currentUser();
 });
 
 // userDetailsProvider is a reusable provider that returns the user data for the
 // the given uid
-final userDetailsProvider = FutureProvider.family((ref, String uid) {
+final userDetailsProvider = FutureProvider.family.autoDispose((ref, String uid) {
   final authController = ref.watch(authControllerProvider.notifier);
   return authController.getUserData(uid);
 });
 
 // currentUserDetailsProvider will return the current user's details
-final currentUserDetailsProvider = FutureProvider((ref) {
+final currentUserDetailsProvider = FutureProvider.autoDispose((ref) {
   final currentUserId  = ref.watch(currentUserAccountProvider).value!.$id;
   final userDetails = ref.watch(userDetailsProvider(currentUserId));
   return userDetails.value;

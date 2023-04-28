@@ -7,7 +7,7 @@ import 'package:twitter_clone/core/core.dart';
 // to signup, use Account from appwrite.dart (to get user accounts)
 // to access user related data, use Account from models.dart
 
-final authAPIProvider = Provider((ref) {
+final authAPIProvider = Provider.autoDispose((ref) {
   // the account will come from the appwriteAccountProvider
   // it will watch any changes that will happen to appwriteAccountProvider
   final account = ref.watch(appwriteAccountProvider);

@@ -2,7 +2,7 @@ import 'package:appwrite/appwrite.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/constants/constants.dart';
 
-final appwriteClientProvider = Provider((ref) {
+final appwriteClientProvider = Provider.autoDispose((ref) {
   Client client = Client();
   return client
       .setEndpoint(AppwriteConstants.endPoint)
@@ -10,7 +10,7 @@ final appwriteClientProvider = Provider((ref) {
       .setSelfSigned(status: true); // selfSigned should only be used in the development
 });
 
-final appwriteAccountProvider = Provider((ref) {
+final appwriteAccountProvider = Provider.autoDispose((ref) {
   // ref allows us to communicate with other providers
   // ref.watch means it will continuously watching any changes that will happen
   // to appwriteClientProvider
@@ -20,17 +20,17 @@ final appwriteAccountProvider = Provider((ref) {
   return Account(client);
 });
 
-final appwriteDatabaseProvider = Provider((ref) {
+final appwriteDatabaseProvider = Provider.autoDispose((ref) {
   final client = ref.watch(appwriteClientProvider);
   return Databases(client);
 });
 
-final appwriteStorageProvider = Provider((ref) {
+final appwriteStorageProvider = Provider.autoDispose((ref) {
   final client = ref.watch(appwriteClientProvider);
   return Storage(client);
 });
 
-final appwriteRealtimeProvider = Provider((ref) {
+final appwriteRealtimeProvider = Provider.autoDispose((ref) {
   final client = ref.watch(appwriteClientProvider);
   return Realtime(client);
 });
