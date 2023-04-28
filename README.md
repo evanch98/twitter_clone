@@ -1,5 +1,5 @@
 # twitter_clone
-Start Date: 20<sup>th</sup> April 2023
+Start Date: 20<sup>th</sup> April 2023<br>
 A Twitter clone app for android and iOS devices.
 
 # Goals
