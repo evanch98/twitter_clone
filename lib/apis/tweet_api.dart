@@ -55,4 +55,10 @@ class TweetAPI implements ITweetAPI {
     );
     return document.documents;
   }
+
+  @override
+  Stream<RealtimeMessage> getLatestTweet() {
+    // TODO: implement getLatestTweet
+    throw UnimplementedError();
+  }
 }
