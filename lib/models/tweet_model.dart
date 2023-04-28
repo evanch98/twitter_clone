@@ -7,12 +7,12 @@ class Tweet {
   final String link;
   final List<String> hashtags;
   final List<String> imageLinks;
-  final String uid;  // user id
+  final String uid; // user id
   final TweetType tweetType;
   final DateTime tweetedAt;
   final List<String> likes;
   final List<String> commentIds;
-  final String id;  // tweet id
+  final String id; // tweet id
   final int reshareCount;
 
 //<editor-fold desc="Data Methods">
@@ -113,13 +113,18 @@ class Tweet {
     return Tweet(
       text: map['text'] as String,
       link: map['link'] as String,
-      hashtags: map['hashtags'] as List<String>,
-      imageLinks: map['imageLinks'] as List<String>,
+      hashtags:
+          (map['hashtags'] as List<dynamic>).map((e) => e.toString()).toList(),
+      imageLinks: (map['imageLinks'] as List<dynamic>)
+          .map((e) => e.toString())
+          .toList(),
       uid: map['uid'] as String,
       tweetType: (map['tweetType'] as String).toTweetTypeEnum(),
-      tweetedAt: map['tweetedAt'] as DateTime,
-      likes: map['likes'] as List<String>,
-      commentIds: map['commentIds'] as List<String>,
+      tweetedAt: DateTime.fromMillisecondsSinceEpoch(map['tweetedAt']),
+      likes: (map['likes'] as List<dynamic>).map((e) => e.toString()).toList(),
+      commentIds: (map['commentIds'] as List<dynamic>)
+          .map((e) => e.toString())
+          .toList(),
       // appwrite stores the id as $id
       id: map['\$id'] as String,
       reshareCount: map['reshareCount'] as int,
