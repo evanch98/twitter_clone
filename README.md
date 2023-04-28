@@ -7,3 +7,4 @@ A Twitter clone app for android and iOS devices.
 
 # Key Features
 - User authentication using Appwrite authentication
+- Updating tweets in realtime
