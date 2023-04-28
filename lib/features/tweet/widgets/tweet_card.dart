@@ -14,6 +14,8 @@ class TweetCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // the reason to use userDetailsProvider is to get the image of the user who
+    // tweeted which may or may not be the current user
     return ref.watch(userDetailsProvider(tweet.uid)).when(
           data: (user) {
             return Column(
