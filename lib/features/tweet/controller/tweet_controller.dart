@@ -8,7 +8,7 @@ import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
 import 'package:twitter_clone/models/models.dart';
 
 final tweetControllerProvider =
-    StateNotifierProvider<TweetController, bool>((ref) {
+    StateNotifierProvider.autoDispose<TweetController, bool>((ref) {
   final tweetAPI = ref.watch(tweetAPIProvider);
   final storageAPI = ref.watch(storageAPIProvider);
   return TweetController(
@@ -18,13 +18,13 @@ final tweetControllerProvider =
   );
 });
 
-final getTweetsProvider = FutureProvider((ref) {
+final getTweetsProvider = FutureProvider.autoDispose((ref) {
   final tweetController = ref.watch(tweetControllerProvider.notifier);
   return tweetController.getTweets();
 });
 
 // provide the getLatestTweet from the TweetAPI
-final getLatestTweetProvider = StreamProvider((ref) {
+final getLatestTweetProvider = StreamProvider.autoDispose((ref) {
   final tweetAPI = ref.watch(tweetAPIProvider);
   return tweetAPI.getLatestTweet();
 });
