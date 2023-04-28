@@ -27,9 +27,7 @@ class _CarouselImageState extends State<CarouselImage> {
                 (link) {
                   return Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(
-                      horizontal: 5,
-                    ),
+                    margin: const EdgeInsets.all(10),
                     child: Image.network(
                       link,
                       fit: BoxFit.contain,
