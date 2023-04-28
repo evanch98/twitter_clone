@@ -99,7 +99,12 @@ class TweetCard extends ConsumerWidget {
                                 ),
                                 TweetIconButton(
                                   pathName: AssetsConstants.commentIcon,
-                                  text: (tweet.commentIds.length).toString(),
+                                  text: tweet.commentIds.length.toString(),
+                                  onTap: () {},
+                                ),
+                                TweetIconButton(
+                                  pathName: AssetsConstants.retweetIcon,
+                                  text: tweet.reshareCount.toString(),
                                   onTap: () {},
                                 ),
                               ],
