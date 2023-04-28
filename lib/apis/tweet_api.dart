@@ -8,7 +8,8 @@ import 'package:twitter_clone/models/models.dart';
 
 final tweetAPIProvider = Provider((ref) {
   final db = ref.watch(appwriteDatabaseProvider);
-  return TweetAPI(db: db);
+  final realtime = ref.watch(appwriteRealtimeProvider);
+  return TweetAPI(db: db, realtime: realtime);
 });
 
 // interface for the TweetAPI class
