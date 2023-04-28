@@ -45,6 +45,7 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
           text: tweetTextController.text,
           context: context,
         );
+    Navigator.pop(context);
   }
 
   @override
