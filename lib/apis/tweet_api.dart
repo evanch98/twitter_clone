@@ -64,7 +64,8 @@ class TweetAPI implements ITweetAPI {
 
   @override
   Stream<RealtimeMessage> getLatestTweet() {
-    // TODO: implement getLatestTweet
-    throw UnimplementedError();
+    return _realtime.subscribe([
+
+    ]).stream;
   }
 }
