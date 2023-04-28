@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:twitter_clone/constants/constants.dart';
+import 'package:twitter_clone/features/tweet/widgets/tweet_list.dart';
 import 'package:twitter_clone/theme/theme.dart';
 
 class UIConstants {
@@ -20,8 +21,8 @@ class UIConstants {
   }
 
   // list of bottom tab bar pages
-  static List<Widget> bottomTabBarPages = [
-    Text("Feed Screen"),
+  static const List<Widget> bottomTabBarPages = [
+    TweetList(),
     Text("Search Screen"),
     Text("Notification Screen"),
   ];
