@@ -23,7 +23,7 @@ final getTweetsProvider = FutureProvider((ref) {
   return tweetController.getTweets();
 });
 
-// provide the getLatestTweet from TweetAPI
+// provide the getLatestTweet from the TweetAPI
 final getLatestTweetProvider = StreamProvider((ref) {
   final tweetAPI = ref.watch(tweetAPIProvider);
   return tweetAPI.getLatestTweet();
