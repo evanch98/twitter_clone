@@ -112,6 +112,14 @@ class TweetCard extends ConsumerWidget {
                                   text: tweet.likes.length.toString(),
                                   onTap: () {},
                                 ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.share_outlined,
+                                    size: 25,
+                                    color: Pallete.greyColor,
+                                  ),
+                                )
                               ],
                             ),
                           )
