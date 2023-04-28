@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class CarouselImage extends StatefulWidget {
@@ -13,8 +14,37 @@ class CarouselImage extends StatefulWidget {
 }
 
 class _CarouselImageState extends State<CarouselImage> {
+  int _current = 0; // current index of the imageLinks
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Stack(
+      children: [
+        Column(
+          children: [
+            CarouselSlider(
+              items: widget.imageLinks.map(
+                (link) {
+                  return Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 5,
+                    ),
+                    child: Image.network(
+                      link,
+                      fit: BoxFit.contain,
+                    ),
+                  );
+                },
+              ).toList(),
+              options: CarouselOptions(
+                height: 400,
+                enableInfiniteScroll: false,
+              ),
+            ),
+          ],
+        )
+      ],
+    );
   }
 }
