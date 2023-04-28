@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TweetIconButton extends StatelessWidget {
-  final String pathName;
-  final String text;
+  final String pathName;  // path to the svg icons
+  final String text;  // name of the button
   final VoidCallback onTap;
 
   const TweetIconButton({
