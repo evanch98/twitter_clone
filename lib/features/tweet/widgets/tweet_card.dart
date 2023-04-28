@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/common/common.dart';
 import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
+import 'package:twitter_clone/features/tweet/widgets/hashtag_text.dart';
 import 'package:twitter_clone/models/models.dart';
 import 'package:twitter_clone/theme/theme.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -33,36 +34,39 @@ class TweetCard extends ConsumerWidget {
                         radius: 30,
                       ),
                     ),
-                    Column(
-                      children: [
-                        // TODO: retweeted
-                        Row(
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.only(right: 5),
-                              child: Text(
-                                user.name,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 19,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // TODO: retweeted
+                          Row(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(right: 5),
+                                child: Text(
+                                  user.name,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 19,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Text(
-                              "@${user.name} · ${timeago.format(
-                                tweet.tweetedAt,
-                                locale: "en_short",
-                              )}",
-                              style: const TextStyle(
-                                color: Pallete.greyColor,
-                                fontSize: 17,
+                              Text(
+                                "@${user.name} · ${timeago.format(
+                                  tweet.tweetedAt,
+                                  locale: "en_short",
+                                )}",
+                                style: const TextStyle(
+                                  color: Pallete.greyColor,
+                                  fontSize: 17,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        // TODO: replied to
-
-                      ],
+                            ],
+                          ),
+                          // TODO: replied to
+                          HashtagText(text: tweet.text),
+                        ],
+                      ),
                     ),
                   ],
                 ),
