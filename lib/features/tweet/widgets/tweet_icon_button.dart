@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:twitter_clone/theme/theme.dart';
 
 class TweetIconButton extends StatelessWidget {
-  final String pathName;  // path to the svg icons
-  final String text;  // name of the button
+  final String pathName; // path to the svg icons
+  final String text; // name of the button
   final VoidCallback onTap;
 
   const TweetIconButton({
@@ -14,6 +16,25 @@ class TweetIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        children: [
+          SvgPicture.asset(
+            pathName,
+            colorFilter: const ColorFilter.mode(
+              Pallete.greyColor,
+              BlendMode.srcIn,
+            ),
+          ),
+          Text(
+            text,
+            style: const TextStyle(
+              fontSize: 16,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
