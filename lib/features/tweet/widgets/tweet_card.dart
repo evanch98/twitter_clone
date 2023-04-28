@@ -22,11 +22,14 @@ class TweetCard extends ConsumerWidget {
               children: [
                 Row(
                   children: [
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        user.profilePic,
+                    Container(
+                      margin: const EdgeInsets.all(10),
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                          user.profilePic,
+                        ),
+                        radius: 30,
                       ),
-                      radius: 30,
                     )
                   ],
                 ),
