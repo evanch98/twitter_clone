@@ -30,6 +30,19 @@ class TweetCard extends ConsumerWidget {
                         ),
                         radius: 30,
                       ),
+                    ),
+                    Column(
+                      children: [
+                        // TODO: retweeted
+                        Row(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(right: 5),
+                              child: Text(user.name),
+                            ),
+                          ],
+                        )
+                      ],
                     )
                   ],
                 ),
