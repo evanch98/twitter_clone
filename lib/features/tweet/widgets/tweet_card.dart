@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/common/common.dart';
 import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
 import 'package:twitter_clone/models/models.dart';
+import 'package:twitter_clone/theme/theme.dart';
 
 class TweetCard extends ConsumerWidget {
   final Tweet tweet;
@@ -44,6 +45,13 @@ class TweetCard extends ConsumerWidget {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 19,
                                 ),
+                              ),
+                            ),
+                            Text(
+                              "@${user.name}",
+                              style: const TextStyle(
+                                color: Pallete.greyColor,
+                                fontSize: 17,
                               ),
                             ),
                           ],
