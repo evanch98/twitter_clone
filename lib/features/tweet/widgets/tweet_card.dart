@@ -49,7 +49,10 @@ class TweetCard extends ConsumerWidget {
                               ),
                             ),
                             Text(
-                              "@${user.name} · ${timeago.format(tweet.tweetedAt)}",
+                              "@${user.name} · ${timeago.format(
+                                tweet.tweetedAt,
+                                locale: "en_short",
+                              )}",
                               style: const TextStyle(
                                 color: Pallete.greyColor,
                                 fontSize: 17,
