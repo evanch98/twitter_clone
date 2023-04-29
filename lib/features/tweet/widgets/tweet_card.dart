@@ -123,6 +123,8 @@ class TweetCard extends ConsumerWidget {
                                             .likeTweet(tweet, user);
                                         return !isLiked;
                                       },
+                                      isLiked:
+                                          tweet.likes.contains(currentUser.uid),
                                       likeBuilder: (isLiked) {
                                         return isLiked
                                             ? SvgPicture.asset(
