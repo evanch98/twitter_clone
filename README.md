@@ -8,6 +8,9 @@ A Twitter clone app for android and iOS devices.
 
 # Key Features
 - User authentication using Appwrite authentication
+- Like button animation similar to that of Twitter
+- Identifying and storing hashtags and links
+- Twitter Blue
 - Updating tweets in realtime
 - Model-View-Controller (MVC) pattern
 - Riverpod for state management
