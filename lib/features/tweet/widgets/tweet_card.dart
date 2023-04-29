@@ -128,6 +128,7 @@ class TweetCard extends ConsumerWidget {
                                             ),
                                           );
                                   },
+                                  likeCount: tweet.likes.length,
                                 ),
                                 IconButton(
                                   onPressed: () {},
