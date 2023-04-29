@@ -25,7 +25,6 @@ class TweetCard extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // we need this because we need to update the like count to the current user
     final currentUser = ref.watch(currentUserDetailsProvider).value;
     // the reason to use userDetailsProvider is to get the image of the user who
     // tweeted which may or may not be the current user
@@ -121,7 +120,7 @@ class TweetCard extends ConsumerWidget {
                                         ref
                                             .read(tweetControllerProvider
                                                 .notifier)
-                                            .likeTweet(tweet, currentUser);
+                                            .likeTweet(tweet, user);
                                         return !isLiked;
                                       },
                                       likeBuilder: (isLiked) {
