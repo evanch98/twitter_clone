@@ -5,7 +5,8 @@ A Twitter clone app for android and iOS devices.
 # Goals
 - To showcase my knowledge of Flutter and Dart
 - To build a Twitter clone app for android and iOS devices with Flutter
-- To effectively utilize Model-View-Controller (MVC) pattern to organize code 
+- To effectively utilize Model-View-Controller (MVC) pattern to organize code
+- To effectively utilize the Riverpod package for state management
 
 # Key Features
 - User authentication using Appwrite authentication
