@@ -130,13 +130,16 @@ class TweetCard extends ConsumerWidget {
                                   },
                                   likeCount: tweet.likes.length,
                                   countBuilder: (likeCount, isLiked, text) {
-                                    return Text(
-                                      text,
-                                      style: TextStyle(
-                                        color: isLiked
-                                            ? Pallete.redColor
-                                            : Pallete.whiteColor,
-                                        fontSize: 16,
+                                    return Padding(
+                                      padding: const EdgeInsets.only(left: 2),
+                                      child: Text(
+                                        text,
+                                        style: TextStyle(
+                                          color: isLiked
+                                              ? Pallete.redColor
+                                              : Pallete.whiteColor,
+                                          fontSize: 16,
+                                        ),
                                       ),
                                     );
                                   },
