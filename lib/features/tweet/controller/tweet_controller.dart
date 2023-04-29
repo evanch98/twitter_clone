@@ -49,6 +49,8 @@ class TweetController extends StateNotifier<bool> {
     return tweetList.map((tweet) => Tweet.fromMap(tweet.data)).toList();
   }
 
+  // to update the total number of like counts in both the Tweet model and the
+  // server
   void likeTweet(Tweet tweet, UserModel userModel) async {
     List<String> likes = tweet.likes;
 
