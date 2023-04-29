@@ -24,3 +24,4 @@ A Twitter clone app for android and iOS devices.
 - [carousel_slider](https://pub.dev/packages/carousel_slider)
 - [timeago](https://pub.dev/packages/timeago)
 - [any_link_preview](https://pub.dev/packages/any_link_preview)
+- [like_button](https://pub.dev/packages/like_button/install)
