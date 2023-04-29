@@ -49,6 +49,27 @@ class TweetController extends StateNotifier<bool> {
     return tweetList.map((tweet) => Tweet.fromMap(tweet.data)).toList();
   }
 
+  void likeTweet(Tweet tweet, UserModel userModel) async {
+    List<String> likes = tweet.likes;
+
+    // if the uid is in the list of likes, it means the user with that uid has
+    // already liked the tweet
+    if (tweet.likes.contains(userModel.uid)) {
+      likes.remove(userModel.uid);
+    } else {
+      // otherwise, the user with that uid has not liked the tweet; therefore,
+      // add the uid to the list of likes
+      likes.add(userModel.uid);
+    }
+
+    // update the tweet likes in the Tweet model
+    tweet = tweet.copyWith(likes: likes);
+    // finally update the tweet likes in the server
+    final res = await _tweetAPI.likeTweet(tweet);
+    // in this case, there will be no message for either failure and success
+    res.fold((l) => null, (r) => null);
+  }
+
   void shareTweet({
     required List<File> images,
     required String text,
