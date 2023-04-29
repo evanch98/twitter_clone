@@ -136,6 +136,7 @@ class TweetCard extends ConsumerWidget {
                                         color: isLiked
                                             ? Pallete.redColor
                                             : Pallete.whiteColor,
+                                        fontSize: 16,
                                       ),
                                     );
                                   },
