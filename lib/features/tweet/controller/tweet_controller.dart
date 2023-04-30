@@ -98,11 +98,15 @@ class TweetController extends StateNotifier<bool> {
           retweetedBy: currentUser.name,
           likes: [],
           commentIds: [],
-          id: ID.unique(), // to make sure the retweeted tweet is a new tweet
+          id: ID.unique(),
+          // to make sure the retweeted tweet is a new tweet
           reshareCount: 0,
         );
         final res2 = await _tweetAPI.shareTweet(tweet);
-        res2.fold((l) => showSnackBar(context, l.message), (r) => null);
+        res2.fold(
+          (l) => showSnackBar(context, l.message),
+          (r) => showSnackBar(context, 'Retweeted!'),
+        );
       },
     );
   }
