@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:twitter_clone/apis/apis.dart';
@@ -72,11 +73,39 @@ class TweetController extends StateNotifier<bool> {
     res.fold((l) => null, (r) => null);
   }
 
+  // to update the total number of reshare counts in both the Tweet model and
+  // the server
   void reshareTweet(
     Tweet tweet,
     UserModel currentUser,
     BuildContext context,
-  ) async {}
+  ) async {
+    tweet = tweet.copyWith(
+      // the original tweet will increment
+      reshareCount: tweet.reshareCount + 1,
+    );
+
+    final res = await _tweetAPI.updateReshareCount(tweet);
+    res.fold(
+      (l) => showSnackBar(context, l.message),
+      (r) async {
+        // if the retweet action is successful, share the retweeted tweet as a
+        // new tweet
+        tweet = tweet.copyWith(
+          // since the retweeted tweet is a new tweet, the likes, commentIds, and
+          // reshareCount of the original tweet will not be carried over to the
+          // new retweeted tweet
+          retweetedBy: currentUser.name,
+          likes: [],
+          commentIds: [],
+          id: ID.unique(), // to make sure the retweeted tweet is a new tweet
+          reshareCount: 0,
+        );
+        final res2 = await _tweetAPI.shareTweet(tweet);
+        res2.fold((l) => showSnackBar(context, l.message), (r) => null);
+      },
+    );
+  }
 
   void shareTweet({
     required List<File> images,
