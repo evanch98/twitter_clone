@@ -97,14 +97,6 @@ class TweetCard extends ConsumerWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     TweetIconButton(
-                                      pathName: AssetsConstants.viewsIcon,
-                                      text: (tweet.commentIds.length +
-                                              tweet.reshareCount +
-                                              tweet.likes.length)
-                                          .toString(),
-                                      onTap: () {},
-                                    ),
-                                    TweetIconButton(
                                       pathName: AssetsConstants.commentIcon,
                                       text: tweet.commentIds.length.toString(),
                                       onTap: () {},
@@ -161,6 +153,14 @@ class TweetCard extends ConsumerWidget {
                                           ),
                                         );
                                       },
+                                    ),
+                                    TweetIconButton(
+                                      pathName: AssetsConstants.viewsIcon,
+                                      text: (tweet.commentIds.length +
+                                          tweet.reshareCount +
+                                          tweet.likes.length)
+                                          .toString(),
+                                      onTap: () {},
                                     ),
                                     IconButton(
                                       onPressed: () {},
