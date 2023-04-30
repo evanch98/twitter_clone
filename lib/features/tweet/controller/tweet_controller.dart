@@ -72,6 +72,12 @@ class TweetController extends StateNotifier<bool> {
     res.fold((l) => null, (r) => null);
   }
 
+  void reshareTweet(
+    Tweet tweet,
+    UserModel currentUser,
+    BuildContext context,
+  ) async {}
+
   void shareTweet({
     required List<File> images,
     required String text,
