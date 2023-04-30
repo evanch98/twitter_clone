@@ -14,6 +14,7 @@ class Tweet {
   final List<String> commentIds;
   final String id; // tweet id
   final int reshareCount;
+  final String retweetedBy;
 
 //<editor-fold desc="Data Methods">
   const Tweet({
@@ -28,6 +29,7 @@ class Tweet {
     required this.commentIds,
     required this.id,
     required this.reshareCount,
+    required this.retweetedBy,
   });
 
   @override
@@ -45,7 +47,8 @@ class Tweet {
           likes == other.likes &&
           commentIds == other.commentIds &&
           id == other.id &&
-          reshareCount == other.reshareCount);
+          reshareCount == other.reshareCount &&
+          retweetedBy == other.retweetedBy);
 
   @override
   int get hashCode =>
@@ -59,11 +62,12 @@ class Tweet {
       likes.hashCode ^
       commentIds.hashCode ^
       id.hashCode ^
-      reshareCount.hashCode;
+      reshareCount.hashCode ^
+      retweetedBy.hashCode;
 
   @override
   String toString() {
-    return 'Tweet{ text: $text, link: $link, hashtags: $hashtags, imageLinks: $imageLinks, uid: $uid, tweetType: $tweetType, tweetedAt: $tweetedAt, likes: $likes, commentIds: $commentIds, id: $id, reshareCount: $reshareCount,}';
+    return 'Tweet{ text: $text, link: $link, hashtags: $hashtags, imageLinks: $imageLinks, uid: $uid, tweetType: $tweetType, tweetedAt: $tweetedAt, likes: $likes, commentIds: $commentIds, id: $id, reshareCount: $reshareCount, retweetedBy: $retweetedBy,}';
   }
 
   Tweet copyWith({
@@ -78,6 +82,7 @@ class Tweet {
     List<String>? commentIds,
     String? id,
     int? reshareCount,
+    String? retweetedBy,
   }) {
     return Tweet(
       text: text ?? this.text,
@@ -91,6 +96,7 @@ class Tweet {
       commentIds: commentIds ?? this.commentIds,
       id: id ?? this.id,
       reshareCount: reshareCount ?? this.reshareCount,
+      retweetedBy: retweetedBy ?? this.retweetedBy,
     );
   }
 
@@ -106,6 +112,7 @@ class Tweet {
       'likes': likes,
       'commentIds': commentIds,
       'reshareCount': reshareCount,
+      'retweetedBy': retweetedBy,
     };
   }
 
@@ -128,6 +135,7 @@ class Tweet {
       // appwrite stores the id as $id
       id: map['\$id'] as String,
       reshareCount: map['reshareCount'] as int,
+      retweetedBy: map['retweetedBy'] as String,
     );
   }
 
