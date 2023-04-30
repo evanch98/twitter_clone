@@ -15,6 +15,7 @@ If you want to test it on an Android device, you must change the endPoint value 
 
 # Key Features
 - User authentication using Appwrite authentication
+- Data persistence with Appwrite Database and Storage
 - Like button animation similar to that of Twitter
 - Identifying and storing hashtags and links
 - Twitter Blue
