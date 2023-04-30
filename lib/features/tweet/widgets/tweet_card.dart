@@ -104,7 +104,16 @@ class TweetCard extends ConsumerWidget {
                                     TweetIconButton(
                                       pathName: AssetsConstants.retweetIcon,
                                       text: tweet.reshareCount.toString(),
-                                      onTap: () {},
+                                      onTap: () {
+                                        ref
+                                            .read(tweetControllerProvider
+                                                .notifier)
+                                            .reshareTweet(
+                                              tweet,
+                                              currentUser,
+                                              context,
+                                            );
+                                      },
                                     ),
                                     LikeButton(
                                       size: 25,
@@ -157,8 +166,8 @@ class TweetCard extends ConsumerWidget {
                                     TweetIconButton(
                                       pathName: AssetsConstants.viewsIcon,
                                       text: (tweet.commentIds.length +
-                                          tweet.reshareCount +
-                                          tweet.likes.length)
+                                              tweet.reshareCount +
+                                              tweet.likes.length)
                                           .toString(),
                                       onTap: () {},
                                     ),
