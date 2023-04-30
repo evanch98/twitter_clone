@@ -99,6 +99,7 @@ class TweetController extends StateNotifier<bool> {
           likes: [],
           commentIds: [],
           id: ID.unique(),
+          tweetedAt: DateTime.now(),
           // to make sure the retweeted tweet is a new tweet
           reshareCount: 0,
         );
