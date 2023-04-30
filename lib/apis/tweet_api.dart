@@ -21,6 +21,8 @@ abstract class ITweetAPI {
   Stream<RealtimeMessage> getLatestTweet();
 
   FutureEither<model.Document> likeTweet(Tweet tweet);
+
+  FutureEither<model.Document> updateReshareCount(Tweet tweet);
 }
 
 class TweetAPI implements ITweetAPI {
