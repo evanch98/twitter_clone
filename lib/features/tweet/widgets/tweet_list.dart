@@ -22,6 +22,29 @@ class TweetList extends ConsumerWidget {
                     )) {
                       // to insert the new tweet at the top of the list
                       tweets.insert(0, Tweet.fromMap(data.payload));
+                    } else if (data.events.contains(
+                      'databases.*.collections.${AppwriteConstants.tweetsCollection}.documents.*.update',
+                    )) {
+                      // get id of the tweet
+                      // to get the id of the old tweet, we need to find it in
+                      // the date events[0] string
+                      final startingPoint = data.events[0].lastIndexOf('documents.');
+                      final endPoint = data.events[0].lastIndexOf('.update');
+                      // startingPoint + 10 because we do not want to include
+                      // 'documents.' and its length is 10
+                      final tweetId = data.events[0].substring(startingPoint + 10, endPoint);
+                      // find the index of the tweet
+                      // we can use first since each tweet id is unique
+                      var tweet = tweets
+                          .where((element) => element.id == tweetId)
+                          .first;
+                      final tweetIndex = tweets.indexOf(tweet);
+                      // remove the id
+                      tweets.removeWhere((element) => element.id == tweetId);
+                      // update the tweet
+                      tweet = Tweet.fromMap(data.payload);
+                      // insert the updated tweet
+                      tweets.insert(tweetIndex, tweet);
                     }
                     return ListView.builder(
                       itemCount: tweets.length,
