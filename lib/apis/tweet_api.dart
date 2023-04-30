@@ -96,8 +96,28 @@ class TweetAPI implements ITweetAPI {
         ),
       );
     } catch (e, st) {
-      return left(
-        Failure(e.toString(), st));
+      return left(Failure(e.toString(), st));
+    }
+  }
+
+  @override
+  FutureEither<model.Document> updateReshareCount(Tweet tweet) async {
+    try {
+      final document = await _db.updateDocument(
+          databaseId: AppwriteConstants.databaseId,
+          collectionId: AppwriteConstants.tweetsCollection,
+          documentId: tweet.id,
+          data: {
+            'reshareCount': tweet.reshareCount,
+          });
+      return right(document);
+    } on AppwriteException catch (e, st) {
+      return left(Failure(
+        e.message ?? "Some unexpected error occurred",
+        st,
+      ));
+    } catch (e, st) {
+      return left(Failure(e.toString(), st));
     }
   }
 }
