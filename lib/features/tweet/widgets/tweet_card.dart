@@ -52,6 +52,9 @@ class TweetCard extends ConsumerWidget {
                             children: [
                               // if the retweetedBy is not empty, it means the
                               // tweet is a retweeted tweet
+                              // this part will only show if the tweet is a
+                              // retweeted tweet
+                              // START
                               if (tweet.retweetedBy.isNotEmpty)
                                 Row(
                                   children: [
@@ -74,6 +77,7 @@ class TweetCard extends ConsumerWidget {
                                     ),
                                   ],
                                 ),
+                              // END
                               Row(
                                 children: [
                                   Container(
