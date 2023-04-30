@@ -1,10 +1,10 @@
 # twitter_clone
 Start Date: 20<sup>th</sup> April 2023<br>
 A Twitter clone app for android and iOS devices.<br>
-**Note**
+> **Note**
 If you want to test the code, you must change the ids in the appwrite_constants.dart file to meet your appwrite configurations.
 
-**Warning**
+> **Warning**
 If you want to test it on an Android device, you must change the endPoint value in the appwrite_constants.dart file to your IP address.
 
 # Goals
