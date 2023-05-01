@@ -30,24 +30,30 @@ class ReplyTweetScreen extends ConsumerWidget {
           TweetCard(tweet: tweet),
         ],
       ),
-      bottomNavigationBar: TextField(
-        onSubmitted: (value) {
-          ref.read(tweetControllerProvider.notifier).shareTweet(
-            images: [],
-            text: value,
-            context: context,
-          );
-        },
-        decoration: const InputDecoration(
-          hintText: 'Tweet your reply',
-          hintStyle: TextStyle(
-            color: Pallete.greyColor,
-            fontSize: 22,
-            fontWeight: FontWeight.w600,
-          ),
-          border: InputBorder.none,
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0).copyWith(
+          left: 15,
+          right: 15,
         ),
-        maxLines: null,
+        child: TextField(
+          onSubmitted: (value) {
+            ref.read(tweetControllerProvider.notifier).shareTweet(
+              images: [],
+              text: value,
+              context: context,
+            );
+          },
+          decoration: const InputDecoration(
+            hintText: 'Tweet your reply',
+            hintStyle: TextStyle(
+              color: Pallete.greyColor,
+              fontSize: 22,
+              fontWeight: FontWeight.w600,
+            ),
+            border: InputBorder.none,
+          ),
+          maxLines: null,
+        ),
       ),
     );
   }
