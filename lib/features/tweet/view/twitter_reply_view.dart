@@ -43,14 +43,20 @@ class ReplyTweetScreen extends ConsumerWidget {
               context: context,
             );
           },
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
             hintText: 'Tweet your reply',
-            hintStyle: TextStyle(
+            hintStyle: const TextStyle(
               color: Pallete.greyColor,
-              fontSize: 22,
+              fontSize: 18,
               fontWeight: FontWeight.w600,
             ),
-            border: InputBorder.none,
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5,),
+            filled: true,
+            fillColor: Pallete.greyColor.withOpacity(0.3),
           ),
           maxLines: null,
         ),
