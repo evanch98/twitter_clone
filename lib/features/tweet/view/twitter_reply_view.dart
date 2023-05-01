@@ -68,7 +68,6 @@ class ReplyTweetScreen extends ConsumerWidget {
                   filled: true,
                   fillColor: Pallete.greyColor.withOpacity(0.3),
                 ),
-                maxLines: null,
               ),
             ),
           ],
