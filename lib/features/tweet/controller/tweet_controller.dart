@@ -130,12 +130,14 @@ class TweetController extends StateNotifier<bool> {
         images: images,
         text: text,
         context: context,
+        repliedTo: repliedTo,
       );
     } else {
       // otherwise, text-based tweet
       _shareTextTweet(
         text: text,
         context: context,
+        repliedTo: repliedTo,
       );
     }
   }
@@ -166,6 +168,7 @@ class TweetController extends StateNotifier<bool> {
       id: '',
       reshareCount: 0,
       retweetedBy: '',
+      repliedTo: repliedTo,
     );
     final res = await _tweetAPI.shareTweet(tweet);
     state = false; // then the state is finished loading
@@ -197,6 +200,7 @@ class TweetController extends StateNotifier<bool> {
       id: '',
       reshareCount: 0,
       retweetedBy: '',
+      repliedTo: repliedTo,
     );
     final res = await _tweetAPI.shareTweet(tweet);
     state = false; // then the state is finished loading
