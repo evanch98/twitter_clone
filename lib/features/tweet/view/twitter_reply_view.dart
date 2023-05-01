@@ -39,6 +39,7 @@ class ReplyTweetScreen extends ConsumerWidget {
               margin: const EdgeInsets.all(10),
               child: const Text('ProfilePic'),
             ),
+            const SizedBox(width: 15,),
             TextField(
               onSubmitted: (value) {
                 ref.read(tweetControllerProvider.notifier).shareTweet(
