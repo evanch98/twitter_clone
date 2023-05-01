@@ -122,4 +122,17 @@ class TweetAPI implements ITweetAPI {
       return left(Failure(e.toString(), st));
     }
   }
+
+  @override
+  Future<List<model.Document>> getRepliesTweet(Tweet tweet) async {
+    final document = await _db.listDocuments(
+      databaseId: AppwriteConstants.databaseId,
+      collectionId: AppwriteConstants.tweetsCollection,
+      queries: [
+        // query any tweet that the repliedTo is equal to the id of that tweet
+        Query.equal('repliedTo', tweet.id),
+      ],
+    );
+    return document.documents;
+  }
 }
