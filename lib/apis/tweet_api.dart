@@ -23,6 +23,8 @@ abstract class ITweetAPI {
   FutureEither<model.Document> likeTweet(Tweet tweet);
 
   FutureEither<model.Document> updateReshareCount(Tweet tweet);
+
+  Future<List<model.Document>> getRepliesTweet(Tweet tweet);
 }
 
 class TweetAPI implements ITweetAPI {
