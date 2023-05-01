@@ -44,6 +44,8 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
           images: images,
           text: tweetTextController.text,
           context: context,
+          // this one should be empty because this tweet is not a replied tweet
+          repliedTo: '',
         );
     Navigator.pop(context);
   }
