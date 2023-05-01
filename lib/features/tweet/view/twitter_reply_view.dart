@@ -33,49 +33,37 @@ class ReplyTweetScreen extends ConsumerWidget {
       ),
       bottomNavigationBar: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0).copyWith(
-              left: 15,
-              right: 15,
-            ),
-            child: Container(
-              margin: const EdgeInsets.all(10),
-              child: const Text('ProfilePic'),
-            ),
+          Container(
+            margin: const EdgeInsets.all(10),
+            child: const Text('ProfilePic'),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0).copyWith(
-              left: 15,
-              right: 15,
-            ),
-            child: TextField(
-              onSubmitted: (value) {
-                ref.read(tweetControllerProvider.notifier).shareTweet(
-                  images: [],
-                  text: value,
-                  context: context,
-                );
-              },
-              decoration: InputDecoration(
-                hintText: 'Tweet your reply',
-                hintStyle: const TextStyle(
-                  color: Pallete.greyColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 5,
-                ),
-                filled: true,
-                fillColor: Pallete.greyColor.withOpacity(0.3),
+          TextField(
+            onSubmitted: (value) {
+              ref.read(tweetControllerProvider.notifier).shareTweet(
+                images: [],
+                text: value,
+                context: context,
+              );
+            },
+            decoration: InputDecoration(
+              hintText: 'Tweet your reply',
+              hintStyle: const TextStyle(
+                color: Pallete.greyColor,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
               ),
-              maxLines: null,
+              border: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 5,
+              ),
+              filled: true,
+              fillColor: Pallete.greyColor.withOpacity(0.3),
             ),
+            maxLines: null,
           ),
         ],
       ),
