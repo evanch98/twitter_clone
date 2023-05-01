@@ -236,4 +236,8 @@ class TweetController extends StateNotifier<bool> {
     }
     return hashtags;
   }
+
+  Future<List<Tweet>> getRepliesTweet(Tweet tweet) {
+
+  }
 }
