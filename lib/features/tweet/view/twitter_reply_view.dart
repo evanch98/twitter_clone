@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
 import 'package:twitter_clone/features/tweet/controller/tweet_controller.dart';
 import 'package:twitter_clone/features/tweet/widgets/tweet_card.dart';
 import 'package:twitter_clone/models/models.dart';
@@ -36,6 +37,10 @@ class ReplyTweetScreen extends ConsumerWidget {
             padding: const EdgeInsets.all(8.0).copyWith(
               left: 15,
               right: 15,
+            ),
+            child: Container(
+              margin: const EdgeInsets.all(10),
+              child: const Text('ProfilePic'),
             ),
           ),
           Padding(
