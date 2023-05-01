@@ -237,7 +237,8 @@ class TweetController extends StateNotifier<bool> {
     return hashtags;
   }
 
-  Future<List<Tweet>> getRepliesTweet(Tweet tweet) {
-
+  Future<List<Tweet>> getRepliesTweet(Tweet tweet) async {
+    final documents = await _tweetAPI.getRepliesTweet(tweet);
+    return documents.map((tweet) => Tweet.fromMap(tweet.data)).toList();
   }
 }
