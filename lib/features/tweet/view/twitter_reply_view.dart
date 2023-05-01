@@ -47,6 +47,7 @@ class ReplyTweetScreen extends ConsumerWidget {
                     images: [],
                     text: value,
                     context: context,
+                    repliedTo: tweet.id,
                   );
                 },
                 decoration: InputDecoration(
