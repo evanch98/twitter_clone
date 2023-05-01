@@ -30,6 +30,13 @@ final getLatestTweetProvider = StreamProvider.autoDispose((ref) {
   return tweetAPI.getLatestTweet();
 });
 
+// provide the replied tweets to a particular tweet
+final getRepliesToTweetsProvider =
+    FutureProvider.family.autoDispose((ref, Tweet tweet) {
+  final tweetController = ref.watch(tweetControllerProvider.notifier);
+  return tweetController.getRepliesTweet(tweet);
+});
+
 class TweetController extends StateNotifier<bool> {
   final Ref _ref; // to get access to the provider in this case
   final TweetAPI _tweetAPI;
