@@ -19,6 +19,7 @@ class ExploreView extends ConsumerStatefulWidget {
 
 class _ExploreViewState extends ConsumerState<ExploreView> {
   final searchController = TextEditingController();
+  bool isShowUsers = false;
 
   @override
   void dispose() {
@@ -47,6 +48,11 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
               Expanded(
                 child: TextField(
                   controller: searchController,
+                  onSubmitted: (value) {
+                    setState(() {
+                      isShowUsers = true;
+                    });
+                  },
                   decoration: InputDecoration(
                     prefixIcon: Transform.scale(
                       scale: 0.5,
@@ -86,21 +92,23 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
           ),
         ),
       ),
-      body: ref.watch(searchUserProvider(searchController.text)).when(
-            data: (users) {
-              return ListView.builder(
-                itemCount: users.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final user = users[index];
-                  return SearchTile(userModel: user);
+      body: isShowUsers
+          ? ref.watch(searchUserProvider(searchController.text)).when(
+                data: (users) {
+                  return ListView.builder(
+                    itemCount: users.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final user = users[index];
+                      return SearchTile(userModel: user);
+                    },
+                  );
                 },
-              );
-            },
-            error: (error, st) => ErrorPage(
-              error: error.toString(),
-            ),
-            loading: () => const Loader(),
-          ),
+                error: (error, st) => ErrorPage(
+                  error: error.toString(),
+                ),
+                loading: () => const Loader(),
+              )
+          : const SizedBox(),
     );
   }
 }
