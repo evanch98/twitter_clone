@@ -61,7 +61,7 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                         ),
                       ),
                     ),
-                    hintText: 'Tweet your reply',
+                    hintText: 'Search Twitter',
                     hintStyle: const TextStyle(
                       color: Pallete.greyColor,
                       fontSize: 18,
