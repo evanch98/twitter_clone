@@ -37,12 +37,13 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
           padding: const EdgeInsets.all(8.0).copyWith(left: 15),
           child: Row(
             children: [
-              currentUser == null || isTextFieldOnFocus == true
-                  ? const SizedBox()
-                  : CircleAvatar(
-                      backgroundImage: NetworkImage(currentUser.profilePic),
-                      radius: 18,
-                    ),
+              if (currentUser == null || isTextFieldOnFocus == true)
+                const SizedBox()
+              else
+                CircleAvatar(
+                  backgroundImage: NetworkImage(currentUser.profilePic),
+                  radius: 18,
+                ),
               SizedBox(
                 width: isTextFieldOnFocus ? 0 : 10,
               ),
