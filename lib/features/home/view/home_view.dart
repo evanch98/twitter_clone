@@ -34,7 +34,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // the appBar with a tweet icon will only be shown if the _page is 0
+      // the appBar with a twitter icon will only be shown if the _page is 0
       appBar: _page == 0 ? appBar : null,
       body: IndexedStack(
         index: _page,
