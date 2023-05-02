@@ -38,9 +38,21 @@ class ReplyTweetScreen extends ConsumerWidget {
                         data: (data) {
                           // get the latest tweet
                           final latestTweet = Tweet.fromMap(data.payload);
+
+                          bool isTweetAlreadyPresent = false;
+                          // check if the tweet is already present in the tweets
+                          for (final tweetModel in tweets) {
+                            if (tweetModel.id == latestTweet.id) {
+                              isTweetAlreadyPresent = true;
+                              break;
+                            }
+                          }
+
                           // unless the repliedTo of the tweet is equal to that
-                          // of the tweet, don't do any tweet retrieving logic
-                          if (latestTweet.repliedTo == tweet.id) {
+                          // of the tweet, and the tweet is not already present,
+                          // don't do any tweet retrieving logic
+                          if (latestTweet.repliedTo == tweet.id &&
+                              !isTweetAlreadyPresent) {
                             if (data.events.contains(
                               'databases.*.collections.${AppwriteConstants.tweetsCollection}.documents.*.create',
                             )) {
