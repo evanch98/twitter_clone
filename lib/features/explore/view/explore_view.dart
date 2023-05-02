@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/common/common.dart';
+import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
+import 'package:twitter_clone/theme/theme.dart';
 
 class ExploreView extends ConsumerStatefulWidget {
   const ExploreView({
@@ -13,6 +16,48 @@ class ExploreView extends ConsumerStatefulWidget {
 class _ExploreViewState extends ConsumerState<ExploreView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final currentUser = ref.watch(currentUserDetailsProvider).value;
+    return Scaffold(
+      appBar: AppBar(
+        title: Padding(
+          padding: const EdgeInsets.all(8.0).copyWith(left: 15),
+          child: Row(
+            children: [
+              currentUser == null
+                  ? const Loader()
+                  : CircleAvatar(
+                backgroundImage: NetworkImage(currentUser.profilePic),
+                radius: 25,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Tweet your reply',
+                    hintStyle: const TextStyle(
+                      color: Pallete.greyColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 5,
+                    ),
+                    filled: true,
+                    fillColor: Pallete.greyColor.withOpacity(0.3),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
