@@ -16,6 +16,14 @@ class ExploreView extends ConsumerStatefulWidget {
 }
 
 class _ExploreViewState extends ConsumerState<ExploreView> {
+  final searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    searchController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final currentUser = ref.watch(currentUserDetailsProvider).value;
@@ -36,6 +44,7 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
               ),
               Expanded(
                 child: TextField(
+                  controller: searchController,
                   decoration: InputDecoration(
                     prefixIcon: Transform.scale(
                       scale: 0.5,
@@ -67,7 +76,7 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                       vertical: 5,
                     ),
                     filled: true,
-                    fillColor: Pallete.greyColor.withOpacity(0.3),
+                    fillColor: Pallete.searchBarColor,
                   ),
                 ),
               ),
