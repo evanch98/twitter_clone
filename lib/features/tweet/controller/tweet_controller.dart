@@ -37,6 +37,13 @@ final getRepliesToTweetsProvider =
   return tweetController.getRepliesTweet(tweet);
 });
 
+// provide the tweet of the given id
+final getTweetByIdProvider =
+    FutureProvider.family.autoDispose((ref, String id) {
+  final tweetController = ref.watch(tweetControllerProvider.notifier);
+  return tweetController.getTweetById(id);
+});
+
 class TweetController extends StateNotifier<bool> {
   final Ref _ref; // to get access to the provider in this case
   final TweetAPI _tweetAPI;
