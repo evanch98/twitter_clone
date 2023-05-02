@@ -108,10 +108,12 @@ class ReplyTweetScreen extends ConsumerWidget {
         padding: const EdgeInsets.all(8.0).copyWith(left: 15),
         child: Row(
           children: [
-            currentUser == null ? const Loader() : CircleAvatar(
-              backgroundImage: NetworkImage(currentUser.profilePic),
-              radius: 25,
-            ),
+            currentUser == null
+                ? const Loader()
+                : CircleAvatar(
+                    backgroundImage: NetworkImage(currentUser.profilePic),
+                    radius: 25,
+                  ),
             const SizedBox(
               width: 10,
             ),
