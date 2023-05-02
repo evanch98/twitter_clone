@@ -248,4 +248,9 @@ class TweetController extends StateNotifier<bool> {
     final documents = await _tweetAPI.getRepliesTweet(tweet);
     return documents.map((tweet) => Tweet.fromMap(tweet.data)).toList();
   }
+
+  Future<Tweet> getTweetById(String id) async {
+    final tweet = await _tweetAPI.getTweetById(id);
+    return Tweet.fromMap(tweet.data);
+  }
 }
