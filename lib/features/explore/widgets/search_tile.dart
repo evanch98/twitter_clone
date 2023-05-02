@@ -16,6 +16,13 @@ class SearchTile extends StatelessWidget {
         backgroundImage: NetworkImage(userModel.profilePic),
         radius: 30,
       ),
+      title: Text(
+        userModel.name,
+        style: const TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
     );
   }
 }
