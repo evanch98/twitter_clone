@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:twitter_clone/common/common.dart';
 import 'package:twitter_clone/constants/constants.dart';
 import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
+import 'package:twitter_clone/features/explore/controller/explore_controller.dart';
+import 'package:twitter_clone/features/explore/widgets/search_tile.dart';
 import 'package:twitter_clone/theme/theme.dart';
 
 class ExploreView extends ConsumerStatefulWidget {
@@ -84,6 +86,21 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
           ),
         ),
       ),
+      body: ref.watch(searchUserProvider(searchController.text)).when(
+            data: (users) {
+              return ListView.builder(
+                itemCount: users.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final user = users[index];
+                  return SearchTile(userModel: user);
+                },
+              );
+            },
+            error: (error, st) => ErrorPage(
+              error: error.toString(),
+            ),
+            loading: () => const Loader(),
+          ),
     );
   }
 }
