@@ -69,12 +69,14 @@ class ReplyTweetScreen extends ConsumerWidget {
                             // insert the updated tweet
                             tweets.insert(tweetIndex, tweet);
                           }
-                          return ListView.builder(
-                            itemCount: tweets.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              final tweet = tweets[index];
-                              return TweetCard(tweet: tweet);
-                            },
+                          return Expanded(
+                            child: ListView.builder(
+                              itemCount: tweets.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                final tweet = tweets[index];
+                                return TweetCard(tweet: tweet);
+                              },
+                            ),
                           );
                         },
                         error: (error, st) => ErrorText(
