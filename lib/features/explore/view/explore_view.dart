@@ -37,7 +37,7 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                   ? const Loader()
                   : CircleAvatar(
                       backgroundImage: NetworkImage(currentUser.profilePic),
-                      radius: 25,
+                      radius: 18,
                     ),
               const SizedBox(
                 width: 10,
