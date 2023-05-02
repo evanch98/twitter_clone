@@ -85,12 +85,14 @@ class ReplyTweetScreen extends ConsumerWidget {
                           // until there is an update, it will keep loading
                           // therefore, one of the way to solve this problem is to
                           // return the same ListView.builder in the state of loading
-                          return ListView.builder(
-                            itemCount: tweets.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              final tweet = tweets[index];
-                              return TweetCard(tweet: tweet);
-                            },
+                          return Expanded(
+                            child: ListView.builder(
+                              itemCount: tweets.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                final tweet = tweets[index];
+                                return TweetCard(tweet: tweet);
+                              },
+                            ),
                           );
                         },
                       );
