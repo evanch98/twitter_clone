@@ -146,6 +146,11 @@ class ReplyTweetScreen extends ConsumerWidget {
                     context: context,
                     repliedTo: tweet.id,
                   );
+                  ref.read(tweetControllerProvider.notifier).updateCommentIds(
+                        tweet,
+                        context,
+                        currentUser!,
+                      );
                 },
                 decoration: InputDecoration(
                   hintText: 'Tweet your reply',
