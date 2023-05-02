@@ -24,6 +24,8 @@ abstract class ITweetAPI {
 
   FutureEither<model.Document> updateReshareCount(Tweet tweet);
 
+  FutureEither<model.Document> updateCommentIds(Tweet tweet);
+
   Future<List<model.Document>> getRepliesTweet(Tweet tweet);
 
   Future<model.Document> getTweetById(String id);
