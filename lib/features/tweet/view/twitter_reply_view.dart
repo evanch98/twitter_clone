@@ -168,7 +168,7 @@ class ReplyTweetScreen extends ConsumerWidget {
                     vertical: 5,
                   ),
                   filled: true,
-                  fillColor: Pallete.greyColor.withOpacity(0.3),
+                  fillColor: Pallete.searchBarColor,
                 ),
               ),
             ),
