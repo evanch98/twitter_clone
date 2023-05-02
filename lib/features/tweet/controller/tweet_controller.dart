@@ -126,6 +126,22 @@ class TweetController extends StateNotifier<bool> {
     );
   }
 
+  // update the list of commentIds in both the Tweet model and the server
+  void updateCommentIds(
+    Tweet tweet,
+    BuildContext context,
+    UserModel userModel,
+  ) async {
+    List<String> commentIds = tweet.commentIds;
+    commentIds.add(userModel.uid);
+    tweet = tweet.copyWith(commentIds: commentIds);
+    final res = await _tweetAPI.updateCommentIds(tweet);
+    res.fold(
+      (l) => showSnackBar(context, l.message),
+      (r) => showSnackBar(context, 'Commented!'),
+    );
+  }
+
   void shareTweet({
     required List<File> images,
     required String text,
