@@ -8,6 +8,13 @@ final exploreControllerProvider =
   return ExploreController(userAPI: userAPI);
 });
 
+// provide the searchUser method from the ExploreController
+final searchUserProvider =
+    FutureProvider.family.autoDispose((ref, String name) {
+  final exploreController = ref.watch(exploreControllerProvider.notifier);
+  return exploreController.searchUser(name);
+});
+
 class ExploreController extends StateNotifier<bool> {
   final UserAPI _userAPI;
 
