@@ -128,7 +128,7 @@ class TweetCard extends ConsumerWidget {
                                               .value;
                                           return RichText(
                                             text: TextSpan(
-                                                text: 'Replying to',
+                                                text: 'Replying to ',
                                                 style: const TextStyle(
                                                     color: Pallete.greyColor,
                                                     fontSize: 16),
@@ -138,7 +138,7 @@ class TweetCard extends ConsumerWidget {
                                                           '@${replyingToUser?.name}',
                                                       style: const TextStyle(
                                                         color:
-                                                            Pallete.greyColor,
+                                                            Pallete.blueColor,
                                                         fontSize: 16,
                                                       ))
                                                 ]),
