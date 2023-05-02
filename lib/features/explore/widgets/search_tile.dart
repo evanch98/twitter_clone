@@ -11,6 +11,11 @@ class SearchTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundImage: NetworkImage(userModel.profilePic),
+        radius: 30,
+      ),
+    );
   }
 }
