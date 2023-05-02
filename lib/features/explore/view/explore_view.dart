@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:twitter_clone/common/common.dart';
+import 'package:twitter_clone/constants/constants.dart';
 import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
 import 'package:twitter_clone/theme/theme.dart';
 
@@ -26,15 +28,30 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
               currentUser == null
                   ? const Loader()
                   : CircleAvatar(
-                backgroundImage: NetworkImage(currentUser.profilePic),
-                radius: 25,
-              ),
+                      backgroundImage: NetworkImage(currentUser.profilePic),
+                      radius: 25,
+                    ),
               const SizedBox(
                 width: 10,
               ),
               Expanded(
                 child: TextField(
                   decoration: InputDecoration(
+                    prefixIcon: Transform.scale(
+                      scale: 0.5,
+                      child: SizedBox(
+                        width: 5,
+                        height: 5,
+                        child: SvgPicture.asset(
+                          AssetsConstants.searchIcon,
+                          colorFilter: const ColorFilter.mode(
+                            Pallete.greyColor,
+                            BlendMode.srcIn,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
                     hintText: 'Tweet your reply',
                     hintStyle: const TextStyle(
                       color: Pallete.greyColor,
