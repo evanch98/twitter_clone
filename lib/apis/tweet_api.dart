@@ -128,6 +128,27 @@ class TweetAPI implements ITweetAPI {
   }
 
   @override
+  FutureEither<model.Document> updateCommentIds(Tweet tweet) async {
+    try {
+      final document = await _db.updateDocument(
+          databaseId: AppwriteConstants.databaseId,
+          collectionId: AppwriteConstants.tweetsCollection,
+          documentId: tweet.id,
+          data: {
+            'commentIds': tweet.commentIds,
+          });
+      return right(document);
+    } on AppwriteException catch (e, st) {
+      return left(Failure(
+        e.message ?? "Some unexpected error occurred",
+        st,
+      ));
+    } catch (e, st) {
+      return left(Failure(e.toString(), st));
+    }
+  }
+
+  @override
   Future<List<model.Document>> getRepliesTweet(Tweet tweet) async {
     final document = await _db.listDocuments(
       databaseId: AppwriteConstants.databaseId,
