@@ -24,6 +24,7 @@ class ReplyTweetScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final currentUser = ref.watch(currentUserDetailsProvider).value;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tweet'),
@@ -107,7 +108,10 @@ class ReplyTweetScreen extends ConsumerWidget {
           children: [
             Container(
               margin: const EdgeInsets.all(10),
-              child: const Text('ProfilePic'),
+              child: currentUser == null ? const Loader() : CircleAvatar(
+                backgroundImage: NetworkImage(currentUser.profilePic),
+                radius: 25,
+              ),
             ),
             const SizedBox(
               width: 15,
