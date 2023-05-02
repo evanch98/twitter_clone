@@ -20,6 +20,7 @@ class ExploreView extends ConsumerStatefulWidget {
 class _ExploreViewState extends ConsumerState<ExploreView> {
   final searchController = TextEditingController();
   bool isShowUsers = false;
+  bool isTextFieldOnFocus = false;
 
   @override
   void dispose() {
@@ -36,14 +37,14 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
           padding: const EdgeInsets.all(8.0).copyWith(left: 15),
           child: Row(
             children: [
-              currentUser == null
-                  ? const Loader()
+              currentUser == null || isTextFieldOnFocus == true
+                  ? const SizedBox()
                   : CircleAvatar(
                       backgroundImage: NetworkImage(currentUser.profilePic),
                       radius: 18,
                     ),
-              const SizedBox(
-                width: 10,
+              SizedBox(
+                width: isTextFieldOnFocus ? 0 : 10,
               ),
               Expanded(
                 child: TextField(
@@ -51,6 +52,11 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                   onSubmitted: (value) {
                     setState(() {
                       isShowUsers = true;
+                    });
+                  },
+                  onTap: () {
+                    setState(() {
+                      isTextFieldOnFocus = true;
                     });
                   },
                   decoration: InputDecoration(
@@ -88,6 +94,21 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                   ),
                 ),
               ),
+              SizedBox(
+                width: isTextFieldOnFocus ? 5 : 0,
+              ),
+              if (isTextFieldOnFocus)
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      isTextFieldOnFocus = false;
+                    });
+                  },
+                  child: const Text(
+                    "Cancel",
+                    style: TextStyle(fontSize: 18, color: Pallete.whiteColor),
+                  ),
+                ),
             ],
           ),
         ),
