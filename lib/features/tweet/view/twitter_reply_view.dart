@@ -36,38 +36,44 @@ class ReplyTweetScreen extends ConsumerWidget {
                 data: (tweets) {
                   return ref.watch(getLatestTweetProvider).when(
                         data: (data) {
-                          if (data.events.contains(
-                            'databases.*.collections.${AppwriteConstants.tweetsCollection}.documents.*.create',
-                          )) {
-                            // to insert the new tweet at the top of the list
-                            tweets.insert(0, Tweet.fromMap(data.payload));
-                          } else if (data.events.contains(
-                            'databases.*.collections.${AppwriteConstants.tweetsCollection}.documents.*.update',
-                          )) {
-                            // get id of the tweet
-                            // to get the id of the old tweet, we need to find it in
-                            // the date events[0] string
-                            final startingPoint =
-                                data.events[0].lastIndexOf('documents.');
-                            final endPoint =
-                                data.events[0].lastIndexOf('.update');
-                            // startingPoint + 10 because we do not want to include
-                            // 'documents.' and its length is 10
-                            final tweetId = data.events[0]
-                                .substring(startingPoint + 10, endPoint);
-                            // find the index of the tweet
-                            // we can use first since each tweet id is unique
-                            var tweet = tweets
-                                .where((element) => element.id == tweetId)
-                                .first;
-                            final tweetIndex = tweets.indexOf(tweet);
-                            // remove the id
-                            tweets.removeWhere(
-                                (element) => element.id == tweetId);
-                            // update the tweet
-                            tweet = Tweet.fromMap(data.payload);
-                            // insert the updated tweet
-                            tweets.insert(tweetIndex, tweet);
+                          // get the latest tweet
+                          final latestTweet = Tweet.fromMap(data.payload);
+                          // unless the repliedTo of the tweet is equal to that
+                          // of the tweet, don't do any tweet retrieving logic
+                          if (latestTweet.repliedTo == tweet.id) {
+                            if (data.events.contains(
+                              'databases.*.collections.${AppwriteConstants.tweetsCollection}.documents.*.create',
+                            )) {
+                              // to insert the new tweet at the top of the list
+                              tweets.insert(0, Tweet.fromMap(data.payload));
+                            } else if (data.events.contains(
+                              'databases.*.collections.${AppwriteConstants.tweetsCollection}.documents.*.update',
+                            )) {
+                              // get id of the tweet
+                              // to get the id of the old tweet, we need to find it in
+                              // the date events[0] string
+                              final startingPoint =
+                                  data.events[0].lastIndexOf('documents.');
+                              final endPoint =
+                                  data.events[0].lastIndexOf('.update');
+                              // startingPoint + 10 because we do not want to include
+                              // 'documents.' and its length is 10
+                              final tweetId = data.events[0]
+                                  .substring(startingPoint + 10, endPoint);
+                              // find the index of the tweet
+                              // we can use first since each tweet id is unique
+                              var tweet = tweets
+                                  .where((element) => element.id == tweetId)
+                                  .first;
+                              final tweetIndex = tweets.indexOf(tweet);
+                              // remove the id
+                              tweets.removeWhere(
+                                  (element) => element.id == tweetId);
+                              // update the tweet
+                              tweet = Tweet.fromMap(data.payload);
+                              // insert the updated tweet
+                              tweets.insert(tweetIndex, tweet);
+                            }
                           }
                           return Expanded(
                             child: ListView.builder(
