@@ -48,6 +48,8 @@ class UserProfile extends ConsumerWidget {
                         child: OutlinedButton(
                           onPressed: () {},
                           child: Text(
+                            // if the user is the current user, show Edit Profile
+                            // otherwise, follow
                             currentUser.uid == userModel.uid
                                 ? "Edit Profile"
                                 : "Follow",
