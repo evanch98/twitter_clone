@@ -34,7 +34,7 @@ class UserProfile extends ConsumerWidget {
           ),
         ];
       },
-      body: body,
+      body: Container(),
     );
   }
 }
