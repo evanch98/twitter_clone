@@ -48,7 +48,9 @@ class UserProfile extends ConsumerWidget {
                         child: OutlinedButton(
                           onPressed: () {},
                           child: Text(
-                            "Follow",
+                            currentUser.uid == userModel.uid
+                                ? "Edit Profile"
+                                : "Follow",
                             style: const TextStyle(
                               color: Pallete.whiteColor,
                             ),
