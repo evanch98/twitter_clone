@@ -1,7 +1,6 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:twitter_clone/features/user_profile/widget/user_profile.dart';
 import 'package:twitter_clone/models/models.dart';
 
 class UserProfileView extends ConsumerWidget {
@@ -19,7 +18,7 @@ class UserProfileView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      body: UserProfileView(
+      body: UserProfile(
         userModel: userModel,
       ),
     );
