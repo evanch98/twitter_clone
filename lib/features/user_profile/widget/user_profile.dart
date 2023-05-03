@@ -96,7 +96,10 @@ class UserProfile extends ConsumerWidget {
                           style: const TextStyle(
                             fontSize: 17,
                           ),
-                        )
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
                       ],
                     ),
                   ),
