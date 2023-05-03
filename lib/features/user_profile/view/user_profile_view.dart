@@ -11,6 +11,8 @@ class UserProfileView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold();
+    return Scaffold(
+      body: UserProfileView(userModel: userModel,),
+    );
   }
 }
