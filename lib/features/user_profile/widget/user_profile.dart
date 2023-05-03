@@ -91,6 +91,12 @@ class UserProfile extends ConsumerWidget {
                             color: Pallete.greyColor,
                           ),
                         ),
+                        Text(
+                          userModel.bio,
+                          style: const TextStyle(
+                            fontSize: 17,
+                          ),
+                        )
                       ],
                     ),
                   ),
