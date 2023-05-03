@@ -47,6 +47,13 @@ class UserProfile extends ConsumerWidget {
                         margin: const EdgeInsets.all(20),
                         child: OutlinedButton(
                           onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              side: const BorderSide(color: Pallete.whiteColor),
+                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 25),
+                          ),
                           child: Text(
                             // if the user is the current user, show Edit Profile
                             // otherwise, follow
