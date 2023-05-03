@@ -37,9 +37,12 @@ class UserProfile extends ConsumerWidget {
                       ),
                       Positioned(
                         bottom: 0,
-                        child: CircleAvatar(
-                          backgroundImage: NetworkImage(userModel.profilePic),
-                          radius: 45,
+                        child: Container(
+                          margin: const EdgeInsets.all(5),
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(userModel.profilePic),
+                            radius: 45,
+                          ),
                         ),
                       ),
                       Container(
