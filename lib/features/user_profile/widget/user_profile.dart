@@ -116,6 +116,12 @@ class UserProfile extends ConsumerWidget {
                             ),
                           ],
                         ),
+                        const SizedBox(
+                          height: 2,
+                        ),
+                        const Divider(
+                          color: Pallete.whiteColor,
+                        ),
                       ],
                     ),
                   ),
