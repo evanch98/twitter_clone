@@ -83,7 +83,14 @@ class UserProfile extends ConsumerWidget {
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
                           ),
-                        )
+                        ),
+                        Text(
+                          "@${userModel.name}",
+                          style: const TextStyle(
+                            fontSize: 17,
+                            color: Pallete.greyColor,
+                          ),
+                        ),
                       ],
                     ),
                   ),
