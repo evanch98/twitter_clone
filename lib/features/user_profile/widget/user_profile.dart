@@ -72,6 +72,22 @@ class UserProfile extends ConsumerWidget {
                     ],
                   ),
                 ),
+                SliverPadding(
+                  padding: const EdgeInsets.all(8),
+                  sliver: SliverList(
+                    delegate: SliverChildListDelegate(
+                      [
+                        Text(
+                          userModel.name,
+                          style: const TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                )
               ];
             },
             body: Container(),
