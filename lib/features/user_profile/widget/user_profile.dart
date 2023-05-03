@@ -35,7 +35,20 @@ class UserProfile extends ConsumerWidget {
                     backgroundImage: NetworkImage(userModel.profilePic),
                     radius: 45,
                   ),
-                )
+                ),
+                Container(
+                  alignment: Alignment.bottomRight,
+                  margin: const EdgeInsets.all(20),
+                  child: OutlinedButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Follow",
+                      style: const TextStyle(
+                        color: Pallete.whiteColor,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
