@@ -1,6 +1,6 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/apis/apis.dart';
-import 'package:twitter_clone/models/models.dart';
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:twitter_clone/apis/apis.dart";
+import "package:twitter_clone/models/models.dart";
 
 final exploreControllerProvider =
     StateNotifierProvider.autoDispose<ExploreController, bool>((ref) {
