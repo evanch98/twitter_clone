@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
-import 'package:twitter_clone/core/core.dart';
+import "package:flutter/foundation.dart";
+import "package:twitter_clone/core/core.dart";
 
 @immutable
 class Tweet {
@@ -71,7 +71,7 @@ class Tweet {
 
   @override
   String toString() {
-    return 'Tweet{ text: $text, link: $link, hashtags: $hashtags, imageLinks: $imageLinks, uid: $uid, tweetType: $tweetType, tweetedAt: $tweetedAt, likes: $likes, commentIds: $commentIds, id: $id, reshareCount: $reshareCount, retweetedBy: $retweetedBy, repliedTo: $repliedTo,}';
+    return "Tweet{ text: $text, link: $link, hashtags: $hashtags, imageLinks: $imageLinks, uid: $uid, tweetType: $tweetType, tweetedAt: $tweetedAt, likes: $likes, commentIds: $commentIds, id: $id, reshareCount: $reshareCount, retweetedBy: $retweetedBy, repliedTo: $repliedTo,}";
   }
 
   Tweet copyWith({
@@ -108,42 +108,42 @@ class Tweet {
 
   Map<String, dynamic> toMap() {
     return {
-      'text': text,
-      'link': link,
-      'hashtags': hashtags,
-      'imageLinks': imageLinks,
-      'uid': uid,
-      'tweetType': tweetType.type,
-      'tweetedAt': tweetedAt.millisecondsSinceEpoch,
-      'likes': likes,
-      'commentIds': commentIds,
-      'reshareCount': reshareCount,
-      'retweetedBy': retweetedBy,
-      'repliedTo': repliedTo,
+      "text": text,
+      "link": link,
+      "hashtags": hashtags,
+      "imageLinks": imageLinks,
+      "uid": uid,
+      "tweetType": tweetType.type,
+      "tweetedAt": tweetedAt.millisecondsSinceEpoch,
+      "likes": likes,
+      "commentIds": commentIds,
+      "reshareCount": reshareCount,
+      "retweetedBy": retweetedBy,
+      "repliedTo": repliedTo,
     };
   }
 
   factory Tweet.fromMap(Map<String, dynamic> map) {
     return Tweet(
-      text: map['text'] as String,
-      link: map['link'] as String,
+      text: map["text"] as String,
+      link: map["link"] as String,
       hashtags:
-          (map['hashtags'] as List<dynamic>).map((e) => e.toString()).toList(),
-      imageLinks: (map['imageLinks'] as List<dynamic>)
+          (map["hashtags"] as List<dynamic>).map((e) => e.toString()).toList(),
+      imageLinks: (map["imageLinks"] as List<dynamic>)
           .map((e) => e.toString())
           .toList(),
-      uid: map['uid'] as String,
-      tweetType: (map['tweetType'] as String).toTweetTypeEnum(),
-      tweetedAt: DateTime.fromMillisecondsSinceEpoch(map['tweetedAt']),
-      likes: (map['likes'] as List<dynamic>).map((e) => e.toString()).toList(),
-      commentIds: (map['commentIds'] as List<dynamic>)
+      uid: map["uid"] as String,
+      tweetType: (map["tweetType"] as String).toTweetTypeEnum(),
+      tweetedAt: DateTime.fromMillisecondsSinceEpoch(map["tweetedAt"]),
+      likes: (map["likes"] as List<dynamic>).map((e) => e.toString()).toList(),
+      commentIds: (map["commentIds"] as List<dynamic>)
           .map((e) => e.toString())
           .toList(),
       // appwrite stores the id as $id
-      id: map['\$id'] as String,
-      reshareCount: map['reshareCount'] as int,
-      retweetedBy: map['retweetedBy'] as String,
-      repliedTo: map['repliedTo'] as String,
+      id: map["\$id"] as String,
+      reshareCount: map["reshareCount"] as int,
+      retweetedBy: map["retweetedBy"] as String,
+      repliedTo: map["repliedTo"] as String,
     );
   }
 
