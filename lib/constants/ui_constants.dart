@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
-import 'package:twitter_clone/constants/constants.dart';
-import 'package:twitter_clone/features/explore/view/explore_view.dart';
-import 'package:twitter_clone/features/tweet/widgets/tweet_list.dart';
-import 'package:twitter_clone/theme/theme.dart';
+import "package:flutter/material.dart";
+import "package:flutter_svg/svg.dart";
+import "package:twitter_clone/constants/constants.dart";
+import "package:twitter_clone/features/explore/view/explore_view.dart";
+import "package:twitter_clone/features/tweet/widgets/tweet_list.dart";
+import "package:twitter_clone/theme/theme.dart";
 
 class UIConstants {
   // to be able to use in the Scaffold appBar because appBar does not accept
