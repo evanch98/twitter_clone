@@ -1,8 +1,8 @@
 // this file is for the utility functions
-import 'dart:io';
+import "dart:io";
 
-import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import "package:flutter/material.dart";
+import "package:image_picker/image_picker.dart";
 
 // the show snackBar utility function
 void showSnackBar(BuildContext context, String content) {
