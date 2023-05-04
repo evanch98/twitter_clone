@@ -1,5 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:twitter_clone/common/common.dart";
+import "package:twitter_clone/features/auth/controller/auth_controller.dart";
+import "package:twitter_clone/theme/theme.dart";
 
 class EditProfileView extends ConsumerStatefulWidget {
   const EditProfileView({
@@ -13,6 +16,35 @@ class EditProfileView extends ConsumerStatefulWidget {
 class _EditProfileViewState extends ConsumerState<EditProfileView> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final currentUser = ref.watch(currentUserDetailsProvider).value;
+    return Scaffold(
+      body: currentUser == null
+          ? const Loader()
+          : Column(
+              children: [
+                Stack(
+                  children: [
+                    Positioned.fill(
+                      child: currentUser.bannerPic.isEmpty
+                          ? Container(
+                        color: Pallete.blueColor,
+                      )
+                          : Image.network(currentUser.bannerPic),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      child: Container(
+                        margin: const EdgeInsets.all(5),
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(currentUser.profilePic),
+                          radius: 45,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+    );
   }
 }
