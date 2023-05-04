@@ -1,3 +1,5 @@
+import "dart:js";
+
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:twitter_clone/common/common.dart";
@@ -5,6 +7,10 @@ import "package:twitter_clone/features/auth/controller/auth_controller.dart";
 import "package:twitter_clone/theme/theme.dart";
 
 class EditProfileView extends ConsumerStatefulWidget {
+  static route() => MaterialPageRoute(
+        builder: (context) => const EditProfileView(),
+      );
+
   const EditProfileView({
     Key? key,
   }) : super(key: key);
@@ -27,8 +33,8 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
                     Positioned.fill(
                       child: currentUser.bannerPic.isEmpty
                           ? Container(
-                        color: Pallete.blueColor,
-                      )
+                              color: Pallete.blueColor,
+                            )
                           : Image.network(currentUser.bannerPic),
                     ),
                     Positioned(
