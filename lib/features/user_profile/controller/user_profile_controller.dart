@@ -7,6 +7,13 @@ final userProfileControllerProvider = StateNotifierProvider.autoDispose((ref) {
   return UserProfileController(tweetAPI: tweetAPI);
 });
 
+final getUserTweetsProvider =
+    FutureProvider.family.autoDispose((ref, String uid) {
+  final userProfileController =
+      ref.watch(userProfileControllerProvider.notifier);
+  return userProfileController.getUserTweets(uid);
+});
+
 class UserProfileController extends StateNotifier<bool> {
   final TweetAPI _tweetAPI;
 
