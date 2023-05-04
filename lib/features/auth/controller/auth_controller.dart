@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:appwrite/models.dart' as model;
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/apis/apis.dart';
-import 'package:twitter_clone/core/core.dart';
-import 'package:twitter_clone/features/auth/view/login_view.dart';
-import 'package:twitter_clone/features/home/view/home_view.dart';
-import 'package:twitter_clone/models/models.dart';
+import "package:flutter/material.dart";
+import "package:appwrite/models.dart" as model;
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:twitter_clone/apis/apis.dart";
+import "package:twitter_clone/core/core.dart";
+import "package:twitter_clone/features/auth/view/login_view.dart";
+import "package:twitter_clone/features/home/view/home_view.dart";
+import "package:twitter_clone/models/models.dart";
 
 // we need to explicitly provide the type for the StateNotifierProvider
 // the first one is the datatype it is going to return
