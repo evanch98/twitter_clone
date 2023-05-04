@@ -171,4 +171,16 @@ class TweetAPI implements ITweetAPI {
       documentId: id,
     );
   }
+
+  @override
+  Future<List<model.Document>> getUserTweets(String uid) async {
+    final document = await _db.listDocuments(
+      databaseId: AppwriteConstants.databaseId,
+      collectionId: AppwriteConstants.tweetsCollection,
+      queries: [
+        Query.equal('uid', uid),
+      ],
+    );
+    return document.documents;
+  }
 }
