@@ -1,20 +1,20 @@
-import 'package:any_link_preview/any_link_preview.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:like_button/like_button.dart';
-import 'package:twitter_clone/common/common.dart';
-import 'package:twitter_clone/constants/constants.dart';
-import 'package:twitter_clone/core/core.dart';
-import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
-import 'package:twitter_clone/features/tweet/controller/tweet_controller.dart';
-import 'package:twitter_clone/features/tweet/view/twitter_reply_view.dart';
-import 'package:twitter_clone/features/tweet/widgets/carousel_image.dart';
-import 'package:twitter_clone/features/tweet/widgets/hashtag_text.dart';
-import 'package:twitter_clone/features/tweet/widgets/tweet_icon_button.dart';
-import 'package:twitter_clone/models/models.dart';
-import 'package:twitter_clone/theme/theme.dart';
-import 'package:timeago/timeago.dart' as timeago;
+import "package:any_link_preview/any_link_preview.dart";
+import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:flutter_svg/svg.dart";
+import "package:like_button/like_button.dart";
+import "package:twitter_clone/common/common.dart";
+import "package:twitter_clone/constants/constants.dart";
+import "package:twitter_clone/core/core.dart";
+import "package:twitter_clone/features/auth/controller/auth_controller.dart";
+import "package:twitter_clone/features/tweet/controller/tweet_controller.dart";
+import "package:twitter_clone/features/tweet/view/twitter_reply_view.dart";
+import "package:twitter_clone/features/tweet/widgets/carousel_image.dart";
+import "package:twitter_clone/features/tweet/widgets/hashtag_text.dart";
+import "package:twitter_clone/features/tweet/widgets/tweet_icon_button.dart";
+import "package:twitter_clone/models/models.dart";
+import "package:twitter_clone/theme/theme.dart";
+import "package:timeago/timeago.dart" as timeago;
 
 class TweetCard extends ConsumerWidget {
   final Tweet tweet;
@@ -76,7 +76,7 @@ class TweetCard extends ConsumerWidget {
                                       ),
                                       const SizedBox(width: 2),
                                       Text(
-                                        '${tweet.retweetedBy} retweeted',
+                                        "${tweet.retweetedBy} retweeted",
                                         style: const TextStyle(
                                           color: Pallete.greyColor,
                                           fontSize: 16,
@@ -128,14 +128,14 @@ class TweetCard extends ConsumerWidget {
                                               .value;
                                           return RichText(
                                             text: TextSpan(
-                                                text: 'Replying to ',
+                                                text: "Replying to ",
                                                 style: const TextStyle(
                                                     color: Pallete.greyColor,
                                                     fontSize: 16),
                                                 children: [
                                                   TextSpan(
                                                       text:
-                                                          '@${replyingToUser?.name}',
+                                                          "@${replyingToUser?.name}",
                                                       style: const TextStyle(
                                                         color:
                                                             Pallete.blueColor,
@@ -158,7 +158,7 @@ class TweetCard extends ConsumerWidget {
                                   AnyLinkPreview(
                                     displayDirection:
                                         UIDirection.uiDirectionHorizontal,
-                                    link: 'https://${tweet.link}',
+                                    link: "https://${tweet.link}",
                                   ),
                                 ],
                                 Container(
