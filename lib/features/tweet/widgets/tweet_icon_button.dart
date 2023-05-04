@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:twitter_clone/theme/theme.dart';
+import "package:flutter/material.dart";
+import "package:flutter_svg/flutter_svg.dart";
+import "package:twitter_clone/theme/theme.dart";
 
 class TweetIconButton extends StatelessWidget {
   final String pathName; // path to the svg icons
