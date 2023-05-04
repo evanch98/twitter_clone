@@ -1,10 +1,10 @@
-import 'package:appwrite/appwrite.dart';
-import 'package:appwrite/models.dart' as model;
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fpdart/fpdart.dart';
-import 'package:twitter_clone/constants/constants.dart';
-import 'package:twitter_clone/core/core.dart';
-import 'package:twitter_clone/models/models.dart';
+import "package:appwrite/appwrite.dart";
+import "package:appwrite/models.dart" as model;
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:fpdart/fpdart.dart";
+import "package:twitter_clone/constants/constants.dart";
+import "package:twitter_clone/core/core.dart";
+import "package:twitter_clone/models/models.dart";
 
 final userAPIProvider = Provider.autoDispose((ref) {
   final db = ref.watch(appwriteDatabaseProvider);
@@ -67,7 +67,7 @@ class UserAPI implements IUserAPI {
       databaseId: AppwriteConstants.databaseId,
       collectionId: AppwriteConstants.usersCollection,
       queries: [
-        Query.search('name', name),
+        Query.search("name", name),
       ]
     );
     return document.documents;
