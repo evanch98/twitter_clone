@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:twitter_clone/common/common.dart';
-import 'package:twitter_clone/constants/constants.dart';
-import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
-import 'package:twitter_clone/features/explore/controller/explore_controller.dart';
-import 'package:twitter_clone/features/explore/widgets/search_tile.dart';
-import 'package:twitter_clone/theme/theme.dart';
+import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:flutter_svg/flutter_svg.dart";
+import "package:twitter_clone/common/common.dart";
+import "package:twitter_clone/constants/constants.dart";
+import "package:twitter_clone/features/auth/controller/auth_controller.dart";
+import "package:twitter_clone/features/explore/controller/explore_controller.dart";
+import "package:twitter_clone/features/explore/widgets/search_tile.dart";
+import "package:twitter_clone/theme/theme.dart";
 
 class ExploreView extends ConsumerStatefulWidget {
   const ExploreView({
@@ -76,7 +76,7 @@ class _ExploreViewState extends ConsumerState<ExploreView> {
                         ),
                       ),
                     ),
-                    hintText: 'Search Twitter',
+                    hintText: "Search Twitter",
                     hintStyle: const TextStyle(
                       color: Pallete.greyColor,
                       fontSize: 18,
