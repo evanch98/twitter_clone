@@ -1,15 +1,15 @@
-import 'dart:io';
+import "dart:io";
 
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:twitter_clone/common/common.dart';
-import 'package:twitter_clone/constants/constants.dart';
-import 'package:twitter_clone/core/core.dart';
-import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
-import 'package:twitter_clone/features/tweet/controller/tweet_controller.dart';
-import 'package:twitter_clone/theme/theme.dart';
+import "package:carousel_slider/carousel_slider.dart";
+import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:flutter_svg/flutter_svg.dart";
+import "package:twitter_clone/common/common.dart";
+import "package:twitter_clone/constants/constants.dart";
+import "package:twitter_clone/core/core.dart";
+import "package:twitter_clone/features/auth/controller/auth_controller.dart";
+import "package:twitter_clone/features/tweet/controller/tweet_controller.dart";
+import "package:twitter_clone/theme/theme.dart";
 
 class CreateTweetScreen extends ConsumerStatefulWidget {
   static route() => MaterialPageRoute(
@@ -45,7 +45,7 @@ class _CreateTweetScreenState extends ConsumerState<CreateTweetScreen> {
           text: tweetTextController.text,
           context: context,
           // this one should be empty because this tweet is not a replied tweet
-          repliedTo: '',
+          repliedTo: "",
         );
     Navigator.pop(context);
   }
