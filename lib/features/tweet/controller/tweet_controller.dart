@@ -1,12 +1,12 @@
-import 'dart:io';
+import "dart:io";
 
-import 'package:appwrite/appwrite.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/apis/apis.dart';
-import 'package:twitter_clone/core/core.dart';
-import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
-import 'package:twitter_clone/models/models.dart';
+import "package:appwrite/appwrite.dart";
+import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:twitter_clone/apis/apis.dart";
+import "package:twitter_clone/core/core.dart";
+import "package:twitter_clone/features/auth/controller/auth_controller.dart";
+import "package:twitter_clone/models/models.dart";
 
 final tweetControllerProvider =
     StateNotifierProvider.autoDispose<TweetController, bool>((ref) {
@@ -120,7 +120,7 @@ class TweetController extends StateNotifier<bool> {
         final res2 = await _tweetAPI.shareTweet(tweet);
         res2.fold(
           (l) => showSnackBar(context, l.message),
-          (r) => showSnackBar(context, 'Retweeted!'),
+          (r) => showSnackBar(context, "Retweeted!"),
         );
       },
     );
@@ -138,7 +138,7 @@ class TweetController extends StateNotifier<bool> {
     final res = await _tweetAPI.updateCommentIds(tweet);
     res.fold(
       (l) => showSnackBar(context, l.message),
-      (r) => showSnackBar(context, 'Commented!'),
+      (r) => showSnackBar(context, "Commented!"),
     );
   }
 
@@ -150,7 +150,7 @@ class TweetController extends StateNotifier<bool> {
   }) {
     // if the text is empty, the tweet function cannot proceed
     if (text.isEmpty) {
-      showSnackBar(context, 'Please enter text');
+      showSnackBar(context, "Please enter text");
       return;
     }
 
@@ -195,9 +195,9 @@ class TweetController extends StateNotifier<bool> {
       tweetedAt: DateTime.now(),
       likes: const [],
       commentIds: const [],
-      id: '',
+      id: "",
       reshareCount: 0,
-      retweetedBy: '',
+      retweetedBy: "",
       repliedTo: repliedTo,
     );
     final res = await _tweetAPI.shareTweet(tweet);
@@ -227,9 +227,9 @@ class TweetController extends StateNotifier<bool> {
       tweetedAt: DateTime.now(),
       likes: const [],
       commentIds: const [],
-      id: '',
+      id: "",
       reshareCount: 0,
-      retweetedBy: '',
+      retweetedBy: "",
       repliedTo: repliedTo,
     );
     final res = await _tweetAPI.shareTweet(tweet);
