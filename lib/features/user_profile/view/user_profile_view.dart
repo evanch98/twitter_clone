@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/features/user_profile/widget/user_profile.dart';
-import 'package:twitter_clone/models/models.dart';
+import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:twitter_clone/features/user_profile/widget/user_profile.dart";
+import "package:twitter_clone/models/models.dart";
 
 class UserProfileView extends ConsumerWidget {
   static route(UserModel userModel) => MaterialPageRoute(
