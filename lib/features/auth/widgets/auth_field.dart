@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:twitter_clone/theme/theme.dart';
+import "package:flutter/material.dart";
+import "package:twitter_clone/theme/theme.dart";
 
 // AuthField will only be used in authentication related text fields
 class AuthField extends StatelessWidget {
