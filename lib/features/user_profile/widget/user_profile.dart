@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:twitter_clone/common/common.dart';
-import 'package:twitter_clone/constants/constants.dart';
-import 'package:twitter_clone/features/auth/controller/auth_controller.dart';
-import 'package:twitter_clone/features/tweet/controller/tweet_controller.dart';
-import 'package:twitter_clone/features/tweet/widgets/tweet_card.dart';
-import 'package:twitter_clone/features/user_profile/controller/user_profile_controller.dart';
-import 'package:twitter_clone/features/user_profile/widget/follow_count.dart';
-import 'package:twitter_clone/models/models.dart';
-import 'package:twitter_clone/theme/theme.dart';
+import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:twitter_clone/common/common.dart";
+import "package:twitter_clone/constants/constants.dart";
+import "package:twitter_clone/features/auth/controller/auth_controller.dart";
+import "package:twitter_clone/features/tweet/controller/tweet_controller.dart";
+import "package:twitter_clone/features/tweet/widgets/tweet_card.dart";
+import "package:twitter_clone/features/user_profile/controller/user_profile_controller.dart";
+import "package:twitter_clone/features/user_profile/widget/follow_count.dart";
+import "package:twitter_clone/models/models.dart";
+import "package:twitter_clone/theme/theme.dart";
 
 class UserProfile extends ConsumerWidget {
   final UserModel userModel;
@@ -153,20 +153,20 @@ class UserProfile extends ConsumerWidget {
                             // don't do any tweet retrieving logic
                             if (!isTweetAlreadyPresent) {
                               if (data.events.contains(
-                                'databases.*.collections.${AppwriteConstants.tweetsCollection}.documents.*.create',
+                                "databases.*.collections.${AppwriteConstants.tweetsCollection}.documents.*.create",
                               )) {
                                 // to insert the new tweet at the top of the list
                                 tweets.insert(0, Tweet.fromMap(data.payload));
                               } else if (data.events.contains(
-                                'databases.*.collections.${AppwriteConstants.tweetsCollection}.documents.*.update',
+                                "databases.*.collections.${AppwriteConstants.tweetsCollection}.documents.*.update",
                               )) {
                                 // get id of the tweet
                                 // to get the id of the old tweet, we need to find it in
                                 // the date events[0] string
                                 final startingPoint =
-                                    data.events[0].lastIndexOf('documents.');
+                                    data.events[0].lastIndexOf("documents.");
                                 final endPoint =
-                                    data.events[0].lastIndexOf('.update');
+                                    data.events[0].lastIndexOf(".update");
                                 // startingPoint + 10 because we do not want to include
                                 // 'documents.' and its length is 10
                                 final tweetId = data.events[0]
