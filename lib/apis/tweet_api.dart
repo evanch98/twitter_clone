@@ -29,6 +29,8 @@ abstract class ITweetAPI {
   Future<List<model.Document>> getRepliesTweet(Tweet tweet);
 
   Future<model.Document> getTweetById(String id);
+
+  Future<List<model.Document>> getUserTweets(String uid);
 }
 
 class TweetAPI implements ITweetAPI {
