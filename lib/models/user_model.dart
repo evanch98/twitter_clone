@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
 @immutable
 class UserModel {
@@ -54,7 +54,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel{ email: $email, name: $name, followers: $followers, following: $following, profilePic: $profilePic, bannerPic: $bannerPic, uid: $uid, bio: $bio, isTwitterBlue: $isTwitterBlue,}';
+    return "UserModel{ email: $email, name: $name, followers: $followers, following: $following, profilePic: $profilePic, bannerPic: $bannerPic, uid: $uid, bio: $bio, isTwitterBlue: $isTwitterBlue,}";
   }
 
   UserModel copyWith({
@@ -84,29 +84,29 @@ class UserModel {
   // we don't need to store id because appwrite will create it automatically
   Map<String, dynamic> toMap() {
     return {
-      'email': email,
-      'name': name,
-      'followers': followers,
-      'following': following,
-      'profilePic': profilePic,
-      'bannerPic': bannerPic,
-      'bio': bio,
-      'isTwitterBlue': isTwitterBlue,
+      "email": email,
+      "name": name,
+      "followers": followers,
+      "following": following,
+      "profilePic": profilePic,
+      "bannerPic": bannerPic,
+      "bio": bio,
+      "isTwitterBlue": isTwitterBlue,
     };
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      email: map['email'] ?? '',
-      name: map['name'] ?? '',
-      followers: List<String>.from(map['followers']),
-      following: List<String>.from(map['following']),
-      profilePic: map['profilePic'] ?? '',
-      bannerPic: map['bannerPic'] ?? '',
+      email: map["email"] ?? "",
+      name: map["name"] ?? "",
+      followers: List<String>.from(map["followers"]),
+      following: List<String>.from(map["following"]),
+      profilePic: map["profilePic"] ?? "",
+      bannerPic: map["bannerPic"] ?? "",
       // appwrite stores the id as $id
-      uid: map['\$id'] ?? '',
-      bio: map['bio'] ?? '',
-      isTwitterBlue: map['isTwitterBlue'] ?? false,
+      uid: map["\$id"] ?? "",
+      bio: map["bio"] ?? "",
+      isTwitterBlue: map["isTwitterBlue"] ?? false,
     );
   }
 
