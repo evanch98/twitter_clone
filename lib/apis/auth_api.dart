@@ -1,8 +1,8 @@
-import 'package:appwrite/appwrite.dart';
-import 'package:appwrite/models.dart' as model;
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:fpdart/fpdart.dart';
-import 'package:twitter_clone/core/core.dart';
+import "package:appwrite/appwrite.dart";
+import "package:appwrite/models.dart" as model;
+import "package:flutter_riverpod/flutter_riverpod.dart";
+import "package:fpdart/fpdart.dart";
+import "package:twitter_clone/core/core.dart";
 
 // to signup, use Account from appwrite.dart (to get user accounts)
 // to access user related data, use Account from models.dart
@@ -71,7 +71,7 @@ class AuthAPI implements IAuthAPI {
       return right(account);
     } on AppwriteException catch (e, stackTrace) {
       return left(
-        Failure(e.message ?? 'Some unexpected error occurred', stackTrace),
+        Failure(e.message ?? "Some unexpected error occurred", stackTrace),
       );
     } catch (e, stackTrace) {
       // left() means datatype from the left side of Either
@@ -95,7 +95,7 @@ class AuthAPI implements IAuthAPI {
       return right(session);
     } on AppwriteException catch (e, stackTrace) {
       return left(
-        Failure(e.message ?? 'Some unexpected error occurred', stackTrace),
+        Failure(e.message ?? "Some unexpected error occurred", stackTrace),
       );
     } catch (e, stackTrace) {
       return left(
