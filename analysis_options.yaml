@@ -4,3 +4,5 @@ linter:
   rules:
     # avoid_print: false
      prefer_double_quotes: true
+     avoid_private_typedef_functions: true
+     camel_case_types: true
