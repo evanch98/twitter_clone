@@ -1,6 +1,6 @@
 enum TweetType {
-  text('text'),
-  image('image');
+  text("text"),
+  image("image");
 
   final String type;
   const TweetType(this.type);
@@ -10,9 +10,9 @@ enum TweetType {
 extension ConvertTweet on String {
   TweetType toTweetTypeEnum() {
     switch(this) {
-      case 'text':
+      case "text":
         return TweetType.text;
-      case 'image':
+      case "image":
         return TweetType.image;
       default:
         return TweetType.text;
