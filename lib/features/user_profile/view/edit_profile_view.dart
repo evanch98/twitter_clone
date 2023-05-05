@@ -35,6 +35,12 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
       appBar: AppBar(
         title: const Text("Edit Profile"),
         centerTitle: false,
+        actions: [
+          TextButton(
+            onPressed: () {},
+            child: const Text("Save"),
+          ),
+        ],
       ),
       body: currentUser == null
           ? const Loader()
@@ -74,7 +80,9 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
                     contentPadding: EdgeInsets.all(18),
                   ),
                 ),
-                const SizedBox(height: 20,),
+                const SizedBox(
+                  height: 20,
+                ),
                 TextField(
                   controller: bioController,
                   decoration: const InputDecoration(
