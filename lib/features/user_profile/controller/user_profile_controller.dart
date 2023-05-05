@@ -77,4 +77,31 @@ class UserProfileController extends StateNotifier<bool> {
       (r) => Navigator.pop(context),
     );
   }
+
+  void followUser({
+    required UserModel userModel, // for other users
+    required BuildContext context,
+    required UserModel currentUser, // for the current user
+  }) async {
+    // this means the current user has already followed the user
+    if (currentUser.following.contains(userModel.uid)) {
+      // remove the current user from the user's followers
+      userModel.followers.remove(currentUser.uid);
+      // remove the user from the current user's following
+      currentUser.following.remove(userModel.uid);
+    } else { // the current user has not followed the user
+      // add the current user to the user's followers
+      userModel.followers.add(currentUser.uid);
+      // add the user to the current user's following
+      currentUser.following.add(userModel.uid);
+    }
+
+    userModel = userModel.copyWith(
+      followers: userModel.followers
+    );
+
+    currentUser = currentUser.copyWith(
+      following: currentUser.following,
+    );
+  }
 }
