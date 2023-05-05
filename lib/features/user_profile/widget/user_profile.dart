@@ -39,7 +39,10 @@ class UserProfile extends ConsumerWidget {
                             ? Container(
                                 color: Pallete.blueColor,
                               )
-                            : Image.network(userModel.bannerPic),
+                            : Image.network(
+                                userModel.bannerPic,
+                                fit: BoxFit.fitWidth,
+                              ),
                       ),
                       Positioned(
                         bottom: 5,
@@ -54,7 +57,7 @@ class UserProfile extends ConsumerWidget {
                         margin: const EdgeInsets.all(20),
                         child: OutlinedButton(
                           onPressed: () {
-                            if (currentUser.uid == userModel.uid){
+                            if (currentUser.uid == userModel.uid) {
                               Navigator.push(
                                 context,
                                 EditProfileView.route(),
