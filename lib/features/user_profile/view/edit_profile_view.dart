@@ -26,26 +26,29 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
           ? const Loader()
           : Column(
               children: [
-                Stack(
-                  children: [
-                    Positioned.fill(
-                      child: currentUser.bannerPic.isEmpty
-                          ? Container(
-                              color: Pallete.blueColor,
-                            )
-                          : Image.network(currentUser.bannerPic),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      child: Container(
-                        margin: const EdgeInsets.all(5),
-                        child: CircleAvatar(
-                          backgroundImage: NetworkImage(currentUser.profilePic),
-                          radius: 45,
+                SizedBox(
+                  height: 200,
+                  child: Stack(
+                    children: [
+                      Positioned.fill(
+                        child: currentUser.bannerPic.isEmpty
+                            ? Container(
+                                color: Pallete.blueColor,
+                              )
+                            : Image.network(currentUser.bannerPic),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        child: Container(
+                          margin: const EdgeInsets.all(5),
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(currentUser.profilePic),
+                            radius: 45,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
