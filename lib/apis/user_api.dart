@@ -24,8 +24,11 @@ abstract class IUserAPI {
 
 class UserAPI implements IUserAPI {
   final Databases _db;
+  final Realtime _realtime;
 
-  UserAPI({required Databases db}) : _db = db;
+  UserAPI({required Databases db, required Realtime realtime})
+      : _db = db,
+        _realtime = realtime;
 
   @override
   FutureEitherVoid saveUserData(UserModel userModel) async {
