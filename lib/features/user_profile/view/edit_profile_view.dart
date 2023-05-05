@@ -43,13 +43,11 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
                             : Image.network(currentUser.bannerPic),
                       ),
                       Positioned(
-                        bottom: 0,
-                        child: Container(
-                          margin: const EdgeInsets.all(5),
-                          child: CircleAvatar(
-                            backgroundImage: NetworkImage(currentUser.profilePic),
-                            radius: 45,
-                          ),
+                        bottom: 2,
+                        left: 20,
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(currentUser.profilePic),
+                          radius: 45,
                         ),
                       ),
                     ],
