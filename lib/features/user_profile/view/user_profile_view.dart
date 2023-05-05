@@ -37,7 +37,11 @@ class UserProfileView extends ConsumerWidget {
             error: (error, st) => ErrorText(
               error: error.toString(),
             ),
-            loading: () => const Loader(),
+            loading: () {
+              return UserProfile(
+                userModel: copyOfUser,
+              );
+            },
           ),
     );
   }
