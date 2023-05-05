@@ -57,6 +57,7 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
   @override
   Widget build(BuildContext context) {
     final currentUser = ref.watch(currentUserDetailsProvider).value;
+    final isLoading = ref.watch(userProfileControllerProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Edit Profile"),
@@ -77,7 +78,7 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
           ),
         ],
       ),
-      body: currentUser == null
+      body: isLoading || currentUser == null
           ? const Loader()
           : Column(
               children: [
