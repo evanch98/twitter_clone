@@ -49,6 +49,7 @@ class UserProfileController extends StateNotifier<bool> {
     required File? bannerFile,
     required File? profileFile,
   }) async {
+    state = true;
     if (bannerFile != null) {
       final bannerUrl = await _storageAPI.uploadImage([bannerFile]);
       userModel = userModel.copyWith(
@@ -64,6 +65,7 @@ class UserProfileController extends StateNotifier<bool> {
     }
 
     final res = await _userAPI.updateUserData(userModel);
+    state = false;
     res.fold(
       (l) => showSnackBar(context, l.message),
       (r) => Navigator.pop(context),
