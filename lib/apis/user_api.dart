@@ -66,12 +66,38 @@ class UserAPI implements IUserAPI {
   @override
   Future<List<model.Document>> searchUserByName(String name) async {
     final document = await _db.listDocuments(
-      databaseId: AppwriteConstants.databaseId,
-      collectionId: AppwriteConstants.usersCollection,
-      queries: [
-        Query.search("name", name),
-      ]
-    );
+        databaseId: AppwriteConstants.databaseId,
+        collectionId: AppwriteConstants.usersCollection,
+        queries: [
+          Query.search("name", name),
+        ]);
     return document.documents;
+  }
+
+  @override
+  FutureEitherVoid updateUserData(UserModel userModel) async {
+    try {
+      await _db.updateDocument(
+        databaseId: AppwriteConstants.databaseId,
+        collectionId: AppwriteConstants.usersCollection,
+        documentId: userModel.uid,
+        data: userModel.toMap(),
+      );
+      return right(null);
+    } on AppwriteException catch (e, st) {
+      return left(
+        Failure(
+          e.message ?? "Some unexpected error occurred",
+          st,
+        ),
+      );
+    } catch (e, st) {
+      return left(
+        Failure(
+          e.toString(),
+          st,
+        ),
+      );
+    }
   }
 }
