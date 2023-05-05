@@ -75,13 +75,16 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
                           child: bannerFile != null
                               ? Image.file(
                                   bannerFile!,
-                                  fit: BoxFit.contain,
+                                  fit: BoxFit.fitWidth,
                                 )
                               : currentUser.bannerPic.isEmpty
                                   ? Container(
                                       color: Pallete.blueColor,
                                     )
-                                  : Image.network(currentUser.bannerPic),
+                                  : Image.network(
+                                      currentUser.bannerPic,
+                                      fit: BoxFit.fitWidth,
+                                    ),
                         ),
                       ),
                       Positioned(
