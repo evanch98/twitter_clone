@@ -147,4 +147,32 @@ class UserAPI implements IUserAPI {
       );
     }
   }
+
+  @override
+  FutureEitherVoid addToFollowing(UserModel userModel) async {
+    try {
+      await _db.updateDocument(
+          databaseId: AppwriteConstants.databaseId,
+          collectionId: AppwriteConstants.usersCollection,
+          documentId: userModel.uid,
+          data: {
+            "following": userModel.following,
+          });
+      return right(null);
+    } on AppwriteException catch (e, st) {
+      return left(
+        Failure(
+          e.message ?? "Some unexpected error occurred",
+          st,
+        ),
+      );
+    } catch (e, st) {
+      return left(
+        Failure(
+          e.toString(),
+          st,
+        ),
+      );
+    }
+  }
 }
