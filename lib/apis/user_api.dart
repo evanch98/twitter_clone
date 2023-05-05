@@ -18,6 +18,8 @@ abstract class IUserAPI {
   Future<model.Document> getUserData(String uid);
 
   Future<List<model.Document>> searchUserByName(String name);
+
+  FutureEitherVoid updateUserData(UserModel userModel);
 }
 
 class UserAPI implements IUserAPI {
