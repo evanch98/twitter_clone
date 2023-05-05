@@ -123,13 +123,12 @@ class UserAPI implements IUserAPI {
   FutureEitherVoid followUser(UserModel userModel) async {
     try {
       await _db.updateDocument(
-        databaseId: AppwriteConstants.databaseId,
-        collectionId: AppwriteConstants.usersCollection,
-        documentId: userModel.uid,
-        data: {
-          "followers": userModel.followers,
-        }
-      );
+          databaseId: AppwriteConstants.databaseId,
+          collectionId: AppwriteConstants.usersCollection,
+          documentId: userModel.uid,
+          data: {
+            "followers": userModel.followers,
+          });
       return right(null);
     } on AppwriteException catch (e, st) {
       return left(
