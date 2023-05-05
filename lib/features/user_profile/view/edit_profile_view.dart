@@ -24,6 +24,7 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
   final nameController = TextEditingController();
   final bioController = TextEditingController();
   File? bannerFile;
+  File? profileFile;
 
   @override
   void dispose() {
@@ -40,6 +41,16 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
         bannerFile = banner;
       });
     }
+  }
+
+  // to select a profile image
+  void selectProfileImage() async {
+    final profileImage = await pickImage();
+    setState(() {
+      if (profileFile != null) {
+        profileFile = profileImage;
+      }
+    });
   }
 
   @override
