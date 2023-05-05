@@ -18,6 +18,11 @@ final userProfileControllerProvider =
   );
 });
 
+final getLatestUserProfileDataProvider = StreamProvider.autoDispose((ref) {
+  final userAPI = ref.watch(userAPIProvider);
+  return userAPI.getLatestUserProfileData();
+});
+
 final getUserTweetsProvider =
     FutureProvider.family.autoDispose((ref, String uid) {
   final userProfileController =
