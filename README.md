@@ -21,6 +21,7 @@ If you want to test it on an Android device, you must change the endPoint value 
 - Twitter Blue
 - Updating tweets in realtime
 - Updating likes, comments, views, and retweets in realtime
+- Editing and updating profile in realtime
 - Model-View-Controller (MVC) pattern
 - Riverpod for state management
 
