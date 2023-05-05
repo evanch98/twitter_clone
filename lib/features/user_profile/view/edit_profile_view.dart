@@ -30,7 +30,12 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
                   height: 200,
                   child: Stack(
                     children: [
-                      Positioned.fill(
+                      Container(
+                        width: double.infinity,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         child: currentUser.bannerPic.isEmpty
                             ? Container(
                                 color: Pallete.blueColor,
