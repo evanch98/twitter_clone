@@ -116,4 +116,33 @@ class UserAPI implements IUserAPI {
       "databases.${AppwriteConstants.databaseId}.collections.${AppwriteConstants.usersCollection}.documents"
     ]).stream;
   }
+
+  @override
+  FutureEitherVoid followUser(UserModel userModel) async {
+    try {
+      await _db.updateDocument(
+        databaseId: AppwriteConstants.databaseId,
+        collectionId: AppwriteConstants.usersCollection,
+        documentId: userModel.uid,
+        data: {
+          "followers": userModel.followers,
+        }
+      );
+      return right(null);
+    } on AppwriteException catch (e, st) {
+      return left(
+        Failure(
+          e.message ?? "Some unexpected error occurred",
+          st,
+        ),
+      );
+    } catch (e, st) {
+      return left(
+        Failure(
+          e.toString(),
+          st,
+        ),
+      );
+    }
+  }
 }
