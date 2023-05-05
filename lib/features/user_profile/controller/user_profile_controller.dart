@@ -4,7 +4,8 @@ import "package:twitter_clone/models/models.dart";
 
 final userProfileControllerProvider = StateNotifierProvider.autoDispose((ref) {
   final tweetAPI = ref.watch(tweetAPIProvider);
-  return UserProfileController(tweetAPI: tweetAPI);
+  final storageAPI = ref.watch(storageAPIProvider);
+  return UserProfileController(tweetAPI: tweetAPI, storageAPI: storageAPI);
 });
 
 final getUserTweetsProvider =
@@ -16,10 +17,13 @@ final getUserTweetsProvider =
 
 class UserProfileController extends StateNotifier<bool> {
   final TweetAPI _tweetAPI;
+  final StorageAPI _storageAPI;
 
   UserProfileController({
     required TweetAPI tweetAPI,
-  })  : _tweetAPI = tweetAPI,
+    required StorageAPI storageAPI,
+  })  : _storageAPI = storageAPI,
+        _tweetAPI = tweetAPI,
         super(false);
 
   Future<List<Tweet>> getUserTweets(String uid) async {
