@@ -3,6 +3,7 @@ import "dart:io";
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:twitter_clone/apis/apis.dart";
+import "package:twitter_clone/core/core.dart";
 import "package:twitter_clone/models/models.dart";
 
 final userProfileControllerProvider = StateNotifierProvider.autoDispose((ref) {
@@ -61,5 +62,11 @@ class UserProfileController extends StateNotifier<bool> {
         profilePic: profileUrl[0],
       );
     }
+
+    final res = await _userAPI.updateUserData(userModel);
+    res.fold(
+      (l) => showSnackBar(context, l.message),
+      (r) => Navigator.pop(context),
+    );
   }
 }
