@@ -32,6 +32,7 @@ Future<List<File>> pickImages() async {
   return images;
 }
 
+// to pick a single image from the gallery
 Future<File?> pickImage() async {
   final ImagePicker picker = ImagePicker();
   final imageFile = await picker.pickImage(source: ImageSource.gallery);
