@@ -34,6 +34,7 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Edit Profile"),
+        centerTitle: false,
       ),
       body: currentUser == null
           ? const Loader()
