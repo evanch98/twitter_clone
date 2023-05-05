@@ -32,6 +32,9 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
   Widget build(BuildContext context) {
     final currentUser = ref.watch(currentUserDetailsProvider).value;
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Edit Profile"),
+      ),
       body: currentUser == null
           ? const Loader()
           : Column(
