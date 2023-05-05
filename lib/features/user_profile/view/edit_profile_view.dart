@@ -1,6 +1,9 @@
+import "dart:io";
+
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:twitter_clone/common/common.dart";
+import "package:twitter_clone/core/core.dart";
 import "package:twitter_clone/features/auth/controller/auth_controller.dart";
 import "package:twitter_clone/theme/theme.dart";
 
@@ -20,12 +23,23 @@ class EditProfileView extends ConsumerStatefulWidget {
 class _EditProfileViewState extends ConsumerState<EditProfileView> {
   final nameController = TextEditingController();
   final bioController = TextEditingController();
+  File? bannerFile;
 
   @override
   void dispose() {
     super.dispose();
     nameController.dispose();
     bioController.dispose();
+  }
+
+  // to select a banner image
+  void selectBannerImage() async {
+    final banner = await pickImage();
+    if (banner != null) {
+      setState(() {
+        bannerFile = banner;
+      });
+    }
   }
 
   @override
