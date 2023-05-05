@@ -6,7 +6,8 @@ import "package:twitter_clone/apis/apis.dart";
 import "package:twitter_clone/core/core.dart";
 import "package:twitter_clone/models/models.dart";
 
-final userProfileControllerProvider = StateNotifierProvider.autoDispose((ref) {
+final userProfileControllerProvider =
+    StateNotifierProvider.autoDispose<UserProfileController, bool>((ref) {
   final tweetAPI = ref.watch(tweetAPIProvider);
   final storageAPI = ref.watch(storageAPIProvider);
   final userAPI = ref.watch(userAPIProvider);
