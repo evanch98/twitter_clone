@@ -63,6 +63,21 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
                     ],
                   ),
                 ),
+                TextField(
+                  controller: nameController,
+                  decoration: const InputDecoration(
+                    hintText: "Name",
+                    contentPadding: EdgeInsets.all(18),
+                  ),
+                ),
+                const SizedBox(height: 20,),
+                TextField(
+                  controller: bioController,
+                  decoration: const InputDecoration(
+                    hintText: "Bio",
+                    contentPadding: EdgeInsets.all(18),
+                  ),
+                ),
               ],
             ),
     );
