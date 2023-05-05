@@ -47,7 +47,7 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
   void selectProfileImage() async {
     final profileImage = await pickImage();
     setState(() {
-      if (profileFile != null) {
+      if (profileImage != null) {
         profileFile = profileImage;
       }
     });
@@ -101,9 +101,19 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
                       Positioned(
                         bottom: 20,
                         left: 20,
-                        child: CircleAvatar(
-                          backgroundImage: NetworkImage(currentUser.profilePic),
-                          radius: 40,
+                        child: GestureDetector(
+                          onTap: selectProfileImage,
+                          child: profileFile != null
+                              ? CircleAvatar(
+                                  backgroundImage: FileImage(profileFile!),
+                                  radius: 40,
+                                )
+                              : CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                    currentUser.profilePic,
+                                  ),
+                                  radius: 40,
+                                ),
                         ),
                       ),
                     ],
