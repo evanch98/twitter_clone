@@ -77,6 +77,7 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
                     hintText: "Bio",
                     contentPadding: EdgeInsets.all(18),
                   ),
+                  maxLines: 4,
                 ),
               ],
             ),
