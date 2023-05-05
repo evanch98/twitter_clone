@@ -106,4 +106,12 @@ class UserAPI implements IUserAPI {
       );
     }
   }
+
+  @override
+  Stream<RealtimeMessage> getLatestUserProfileData() {
+    return _realtime.subscribe([
+      // databases -> collections -> documents (path to the usersCollection channel to keep track of)
+      "databases.${AppwriteConstants.databaseId}.collections.${AppwriteConstants.usersCollection}.documents"
+    ]).stream;
+  }
 }
