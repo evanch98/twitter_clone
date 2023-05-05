@@ -84,7 +84,9 @@ class UserProfile extends ConsumerWidget {
                             // otherwise, follow
                             currentUser.uid == userModel.uid
                                 ? "Edit Profile"
-                                : "Follow",
+                                : currentUser.following.contains(userModel.uid)
+                                    ? "Following"
+                                    : "Follow",
                             style: const TextStyle(
                               color: Pallete.whiteColor,
                             ),
