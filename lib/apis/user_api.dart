@@ -21,6 +21,8 @@ abstract class IUserAPI {
   Future<List<model.Document>> searchUserByName(String name);
 
   FutureEitherVoid updateUserData(UserModel userModel);
+
+  Stream<RealtimeMessage> getLatestUserProfileData();
 }
 
 class UserAPI implements IUserAPI {
