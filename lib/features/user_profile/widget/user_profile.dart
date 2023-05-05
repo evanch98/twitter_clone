@@ -56,10 +56,12 @@ class UserProfile extends ConsumerWidget {
                         margin: const EdgeInsets.all(20),
                         child: OutlinedButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              EditProfileView.route(),
-                            );
+                            if (currentUser.uid == userModel.uid){
+                              Navigator.push(
+                                context,
+                                EditProfileView.route(),
+                              );
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(
