@@ -8,7 +8,8 @@ import "package:twitter_clone/models/models.dart";
 
 final userAPIProvider = Provider.autoDispose((ref) {
   final db = ref.watch(appwriteDatabaseProvider);
-  return UserAPI(db: db);
+  final realtime = ref.watch(appwriteRealtimeProvider);
+  return UserAPI(db: db, realtime: realtime);
 });
 
 // interface for the UserAPI class
