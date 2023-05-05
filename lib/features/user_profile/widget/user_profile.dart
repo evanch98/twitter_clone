@@ -42,13 +42,11 @@ class UserProfile extends ConsumerWidget {
                             : Image.network(userModel.bannerPic),
                       ),
                       Positioned(
-                        bottom: 0,
-                        child: Container(
-                          margin: const EdgeInsets.all(5),
-                          child: CircleAvatar(
-                            backgroundImage: NetworkImage(userModel.profilePic),
-                            radius: 45,
-                          ),
+                        bottom: 5,
+                        left: 5,
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(userModel.profilePic),
+                          radius: 45,
                         ),
                       ),
                       Container(
