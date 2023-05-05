@@ -81,9 +81,10 @@ class UserProfile extends ConsumerWidget {
                           ),
                           child: Text(
                             // if the user is the current user, show Edit Profile
-                            // otherwise, follow
                             currentUser.uid == userModel.uid
                                 ? "Edit Profile"
+                            // otherwise, if the current user has already followed
+                            // the user, show Following, otherwise Follow
                                 : currentUser.following.contains(userModel.uid)
                                     ? "Following"
                                     : "Follow",
