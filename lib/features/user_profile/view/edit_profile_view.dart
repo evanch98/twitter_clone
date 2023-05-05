@@ -64,17 +64,22 @@ class _EditProfileViewState extends ConsumerState<EditProfileView> {
                   height: 200,
                   child: Stack(
                     children: [
-                      Container(
-                        width: double.infinity,
-                        height: 150,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                      GestureDetector(
+                        onTap: selectBannerImage,
+                        child: Container(
+                          width: double.infinity,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: bannerFile != null
+                              ? Image.file(bannerFile!)
+                              : currentUser.bannerPic.isEmpty
+                                  ? Container(
+                                      color: Pallete.blueColor,
+                                    )
+                                  : Image.network(currentUser.bannerPic),
                         ),
-                        child: currentUser.bannerPic.isEmpty
-                            ? Container(
-                                color: Pallete.blueColor,
-                              )
-                            : Image.network(currentUser.bannerPic),
                       ),
                       Positioned(
                         bottom: 20,
