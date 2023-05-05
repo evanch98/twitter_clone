@@ -103,5 +103,11 @@ class UserProfileController extends StateNotifier<bool> {
     currentUser = currentUser.copyWith(
       following: currentUser.following,
     );
+
+    final res = await _userAPI.followUser(userModel);
+    res.fold((l) => showSnackBar(context, l.message), (r) async {
+      final res2 = await _userAPI.addToFollowing(currentUser);
+      res2.fold((l) => showSnackBar(context, l.message), (r) => null);
+    });
   }
 }
