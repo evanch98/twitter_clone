@@ -1,4 +1,6 @@
 // interface for the NotificationAPI
-abstract class INotificationAPI {
+import "package:twitter_clone/core/core.dart";
 
+abstract class INotificationAPI {
+  FutureEitherVoid createNotification();
 }
