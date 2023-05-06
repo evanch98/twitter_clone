@@ -1,5 +1,17 @@
 import "package:flutter/material.dart";
 
+/// A model class that represents a user in the application.
+///
+/// The [UserModel] class is immutable and contains all the properties that define a user
+/// in the application. It has properties such as email, name, followers, following, profilePic,
+/// bannerPic, uid, bio and isTwitterBlue.
+///
+/// The [UserModel] class also contains methods for comparison, copying and conversion to and from
+/// a map. It overrides the == operator to compare two [UserModel] objects based on their
+/// properties. It also provides a copyWith method to create a new [UserModel] object with
+/// updated properties. The toMap method is used to convert a [UserModel] object to a map
+/// that can be stored in a database, and the fromMap method is used to create a [UserModel]
+/// object from a map retrieved from a database.
 @immutable
 class UserModel {
   final String email;
