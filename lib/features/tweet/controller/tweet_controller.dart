@@ -136,7 +136,15 @@ class TweetController extends StateNotifier<bool> {
         final res2 = await _tweetAPI.shareTweet(tweet);
         res2.fold(
           (l) => showSnackBar(context, l.message),
-          (r) => showSnackBar(context, "Retweeted!"),
+          (r) {
+            _notificationController.createNotification(
+              text: "${currentUser.name} retweeted your tweet!",
+              postId: tweet.id,
+              notificationType: NotificationType.retweet,
+              uid: tweet.uid,
+            );
+            showSnackBar(context, "Retweeted!");
+          },
         );
       },
     );
