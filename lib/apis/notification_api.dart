@@ -51,4 +51,16 @@ class NotificationAPI implements INotificationAPI {
       );
     }
   }
+
+  @override
+  Future<List<model.Document>> getNotifications(String uid) async {
+    final document = await _db.listDocuments(
+      databaseId: AppwriteConstants.databaseId,
+      collectionId: AppwriteConstants.notificationsCollection,
+      queries: [
+        Query.equal("uid", uid),
+      ],
+    );
+    return document.documents;
+  }
 }
