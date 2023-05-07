@@ -20,13 +20,10 @@ abstract class INotificationAPI {
 
 class NotificationAPI implements INotificationAPI {
   final Databases _db;
-  final Realtime _realtime;
 
   NotificationAPI({
     required Databases db,
-    required Realtime realtime,
-  })  : _db = db,
-        _realtime = realtime;
+  }) : _db = db;
 
   @override
   FutureEitherVoid createNotification(Notification notification) async {
