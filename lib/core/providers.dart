@@ -39,3 +39,8 @@ final appwriteRealtimeProviderForUserProfile = Provider.autoDispose((ref) {
   final client = ref.watch(appwriteClientProvider);
   return Realtime(client);
 });
+
+final appwriteRealtimeProviderForNotification = Provider.autoDispose((ref) {
+  final client = ref.watch(appwriteClientProvider);
+  return Realtime(client);
+});
