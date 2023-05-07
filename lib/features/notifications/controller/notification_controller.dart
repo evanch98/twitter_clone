@@ -9,6 +9,11 @@ final notificationControllerProvider =
   return NotificationController(notificationAPI: notificationAPI);
 });
 
+final getLatestNotificationProvider = StreamProvider.autoDispose((ref) {
+  final notificationAPI = ref.watch(notificationAPIProvider);
+  return notificationAPI.getLatestNotification();
+});
+
 class NotificationController extends StateNotifier<bool> {
   final NotificationAPI _notificationAPI;
 
