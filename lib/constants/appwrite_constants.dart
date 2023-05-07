@@ -8,6 +8,8 @@ class AppwriteConstants {
       "644550ab7e2edb94d48b"; // appwrite usersCollection from database Id
   static const String tweetsCollection =
       "64495bb46b4f145c1af6"; // appwrite tweetsCollection from database Id
+  static const String notificationsCollection =
+      "6457c0c16fd99efae201"; // appwrite notificationsCollection from database Id
   static const String imagesBucket =
       "644a2c1ae99a2ef2f1bb"; // appwrite imagesBucket Id from Storage
 
