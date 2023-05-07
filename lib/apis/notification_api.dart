@@ -1,4 +1,5 @@
 import "package:appwrite/appwrite.dart";
+import "package:appwrite/models.dart" as model;
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:fpdart/fpdart.dart";
 import "package:twitter_clone/constants/constants.dart";
@@ -13,6 +14,8 @@ final notificationAPIProvider = Provider.autoDispose((ref) {
 // interface for the NotificationAPI
 abstract class INotificationAPI {
   FutureEitherVoid createNotification(Notification notification);
+
+  Future<List<model.Document>> getNotifications(String uid);
 }
 
 class NotificationAPI implements INotificationAPI {
