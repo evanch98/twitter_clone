@@ -69,4 +69,11 @@ class NotificationAPI implements INotificationAPI {
     );
     return document.documents;
   }
+
+  @override
+  Stream<RealtimeMessage> getLatestNotification() {
+    return _realtime.subscribe([
+      "databases.${AppwriteConstants.databaseId}.collections.${AppwriteConstants.notificationsCollection}.documents"
+    ]).stream;
+  }
 }
