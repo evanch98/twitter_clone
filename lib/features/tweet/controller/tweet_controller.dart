@@ -93,7 +93,14 @@ class TweetController extends StateNotifier<bool> {
     // finally update the tweet likes in the server
     final res = await _tweetAPI.likeTweet(tweet);
     // in this case, there will be no message for either failure and success
-    res.fold((l) => null, (r) => null);
+    res.fold((l) => null, (r) {
+      _notificationController.createNotification(
+        text: tweet.text,
+        postId: tweet.id,
+        notificationType: NotificationType.like,
+        uid: tweet.uid,
+      );
+    });
   }
 
   // to update the total number of reshare counts in both the Tweet model and
