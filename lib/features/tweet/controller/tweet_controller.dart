@@ -8,6 +8,7 @@ import "package:twitter_clone/core/core.dart";
 import "package:twitter_clone/features/auth/controller/auth_controller.dart";
 import "package:twitter_clone/models/models.dart";
 
+//<editor-fold desc="Providers">
 final tweetControllerProvider =
     StateNotifierProvider.autoDispose<TweetController, bool>((ref) {
   final tweetAPI = ref.watch(tweetAPIProvider);
@@ -45,6 +46,7 @@ final getTweetByIdProvider =
   final tweetController = ref.watch(tweetControllerProvider.notifier);
   return tweetController.getTweetById(id);
 });
+//</editor-fold>
 
 class TweetController extends StateNotifier<bool> {
   final Ref _ref; // to get access to the provider in this case
