@@ -6,6 +6,7 @@ import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:twitter_clone/apis/apis.dart";
 import "package:twitter_clone/core/core.dart";
 import "package:twitter_clone/features/auth/controller/auth_controller.dart";
+import "package:twitter_clone/features/notifications/controller/notification_controller.dart";
 import "package:twitter_clone/models/models.dart";
 
 //<editor-fold desc="Providers">
@@ -13,12 +14,13 @@ final tweetControllerProvider =
     StateNotifierProvider.autoDispose<TweetController, bool>((ref) {
   final tweetAPI = ref.watch(tweetAPIProvider);
   final storageAPI = ref.watch(storageAPIProvider);
-  final notificationAPI = ref.watch(notificationAPIProvider);
+  final notificationController =
+      ref.watch(notificationControllerProvider.notifier);
   return TweetController(
     ref: ref,
     tweetAPI: tweetAPI,
     storageAPI: storageAPI,
-    notificationAPI: notificationAPI,
+    notificationController: notificationController,
   );
 });
 
@@ -52,17 +54,17 @@ class TweetController extends StateNotifier<bool> {
   final Ref _ref; // to get access to the provider in this case
   final TweetAPI _tweetAPI;
   final StorageAPI _storageAPI;
-  final NotificationAPI _notificationAPI;
+  final NotificationController _notificationController;
 
   TweetController({
     required Ref ref,
     required TweetAPI tweetAPI,
     required StorageAPI storageAPI,
-    required NotificationAPI notificationAPI,
+    required NotificationController notificationController,
   })  : _ref = ref,
         _tweetAPI = tweetAPI,
         _storageAPI = storageAPI,
-        _notificationAPI = notificationAPI,
+        _notificationController = notificationController,
         super(false);
 
   Future<List<Tweet>> getTweets() async {
