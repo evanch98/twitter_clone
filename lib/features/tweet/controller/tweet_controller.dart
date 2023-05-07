@@ -48,14 +48,17 @@ class TweetController extends StateNotifier<bool> {
   final Ref _ref; // to get access to the provider in this case
   final TweetAPI _tweetAPI;
   final StorageAPI _storageAPI;
+  final NotificationAPI _notificationAPI;
 
   TweetController({
     required Ref ref,
     required TweetAPI tweetAPI,
     required StorageAPI storageAPI,
+    required NotificationAPI notificationAPI,
   })  : _ref = ref,
         _tweetAPI = tweetAPI,
         _storageAPI = storageAPI,
+        _notificationAPI = notificationAPI,
         super(false);
 
   Future<List<Tweet>> getTweets() async {
