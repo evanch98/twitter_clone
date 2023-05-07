@@ -17,6 +17,8 @@ abstract class INotificationAPI {
   FutureEitherVoid createNotification(Notification notification);
 
   Future<List<model.Document>> getNotifications(String uid);
+
+  Stream<RealtimeMessage> getLatestNotification();
 }
 
 class NotificationAPI implements INotificationAPI {
