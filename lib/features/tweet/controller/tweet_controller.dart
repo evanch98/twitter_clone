@@ -95,7 +95,7 @@ class TweetController extends StateNotifier<bool> {
     // in this case, there will be no message for either failure and success
     res.fold((l) => null, (r) {
       _notificationController.createNotification(
-        text: tweet.text,
+        text: "${userModel.name} liked your tweet!",
         postId: tweet.id,
         notificationType: NotificationType.like,
         uid: tweet.uid,
