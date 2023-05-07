@@ -42,7 +42,8 @@ class NotificationController extends StateNotifier<bool> {
       uid: uid,
       notificationType: notificationType,
     );
-    await _notificationAPI.createNotification(notification);
+    final res = await _notificationAPI.createNotification(notification);
+    res.fold((l) => null, (r) => null);
   }
 
   Future<List<Notification>> getNotifications(String uid) async {
