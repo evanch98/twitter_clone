@@ -14,6 +14,13 @@ final getLatestNotificationProvider = StreamProvider.autoDispose((ref) {
   return notificationAPI.getLatestNotification();
 });
 
+final getNotificationsProvider =
+    FutureProvider.family.autoDispose((ref, String uid) {
+  final notificationController =
+      ref.watch(notificationControllerProvider.notifier);
+  return notificationController.getNotifications(uid);
+});
+
 class NotificationController extends StateNotifier<bool> {
   final NotificationAPI _notificationAPI;
 
@@ -36,5 +43,10 @@ class NotificationController extends StateNotifier<bool> {
       notificationType: notificationType,
     );
     await _notificationAPI.createNotification(notification);
+  }
+
+  Future<List<Notification>> getNotifications(String uid) async {
+    final notifications = await _notificationAPI.getNotifications(uid);
+    return notifications.map((e) => Notification.fromMap(e.data)).toList();
   }
 }
