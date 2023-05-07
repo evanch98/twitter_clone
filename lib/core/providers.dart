@@ -30,7 +30,7 @@ final appwriteStorageProvider = Provider.autoDispose((ref) {
   return Storage(client);
 });
 
-final appwriteRealtimeProvider = Provider.autoDispose((ref) {
+final appwriteRealtimeProviderForTweet = Provider.autoDispose((ref) {
   final client = ref.watch(appwriteClientProvider);
   return Realtime(client);
 });
