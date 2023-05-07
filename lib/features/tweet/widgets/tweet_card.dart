@@ -211,7 +211,10 @@ class TweetCard extends ConsumerWidget {
                                           ref
                                               .read(tweetControllerProvider
                                                   .notifier)
-                                              .likeTweet(tweet, user);
+                                              .likeTweet(
+                                                tweet,
+                                                currentUser,
+                                              );
                                           return !isLiked;
                                         },
                                         isLiked: tweet.likes
