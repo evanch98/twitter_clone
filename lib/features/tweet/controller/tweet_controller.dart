@@ -12,10 +12,12 @@ final tweetControllerProvider =
     StateNotifierProvider.autoDispose<TweetController, bool>((ref) {
   final tweetAPI = ref.watch(tweetAPIProvider);
   final storageAPI = ref.watch(storageAPIProvider);
+  final notificationAPI = ref.watch(notificationAPIProvider);
   return TweetController(
     ref: ref,
     tweetAPI: tweetAPI,
     storageAPI: storageAPI,
+    notificationAPI: notificationAPI,
   );
 });
 
