@@ -27,9 +27,15 @@ class NotificationView extends ConsumerWidget {
                           if (data.events.contains(
                             "databases.*.collections.${AppwriteConstants.notificationsCollection}.documents.*.create",
                           )) {
-                            // to insert the new tweet at the top of the list
-                            notifications.insert(
-                                0, model.Notification.fromMap(data.payload));
+                            final latestNotification =
+                                model.Notification.fromMap(data.payload);
+                            // only if the notification's uid matches with the currentUser's uid,
+                            // it will be added to the notifications list
+                            if (latestNotification.uid == currentUser.uid) {
+                              // to insert the new tweet at the top of the list
+                              notifications.insert(
+                                  0, model.Notification.fromMap(data.payload));
+                            }
                           }
                           return ListView.builder(
                             itemCount: notifications.length,
