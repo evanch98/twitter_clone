@@ -49,6 +49,7 @@ class NotificationTile extends StatelessWidget {
                           height: 20,
                         )
                       : null,
+      title: Text(notification.text),
     );
   }
 }
