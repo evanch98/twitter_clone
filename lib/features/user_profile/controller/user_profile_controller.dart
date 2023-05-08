@@ -113,7 +113,14 @@ class UserProfileController extends StateNotifier<bool> {
     final res = await _userAPI.followUser(userModel);
     res.fold((l) => showSnackBar(context, l.message), (r) async {
       final res2 = await _userAPI.addToFollowing(currentUser);
-      res2.fold((l) => showSnackBar(context, l.message), (r) => null);
+      res2.fold((l) => showSnackBar(context, l.message), (r) {
+        _notificationController.createNotification(
+          text: "${currentUser.name} followed you!",
+          postId: "",
+          notificationType: NotificationType.follow,
+          uid: userModel.uid,
+        );
+      });
     });
   }
 }
