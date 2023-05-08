@@ -115,7 +115,7 @@ class UserProfile extends ConsumerWidget {
                             if (userModel.isTwitterBlue)
                               Padding(
                                 padding: const EdgeInsets.only(
-                                  left: 5.0,
+                                  left: 3.0,
                                 ),
                                 child: SvgPicture.asset(
                                   AssetsConstants.verifiedIcon,
