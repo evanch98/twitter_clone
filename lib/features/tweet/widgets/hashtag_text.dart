@@ -1,4 +1,6 @@
+import "package:flutter/gestures.dart";
 import "package:flutter/material.dart";
+import "package:twitter_clone/features/tweet/view/hashtag_view.dart";
 import "package:twitter_clone/theme/theme.dart";
 
 // To change the color of hashtags and links
@@ -27,6 +29,9 @@ class HashtagText extends StatelessWidget {
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
+            recognizer: TapGestureRecognizer()..onTap = () {
+              Navigator.push(context, HashtagView.route(element),);
+            }
           ),
         );
       } else if (element.startsWith("www.") ||
