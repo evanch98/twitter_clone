@@ -12,10 +12,13 @@ final userProfileControllerProvider =
   final tweetAPI = ref.watch(tweetAPIProvider);
   final storageAPI = ref.watch(storageAPIProvider);
   final userAPI = ref.watch(userAPIProvider);
+  final notificationController =
+      ref.watch(notificationControllerProvider.notifier);
   return UserProfileController(
     tweetAPI: tweetAPI,
     storageAPI: storageAPI,
     userAPI: userAPI,
+    notificationController: notificationController,
   );
 });
 
