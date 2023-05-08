@@ -15,8 +15,14 @@ class SideDrawer extends ConsumerWidget {
         child: Column(
           children: [
             ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text("My Profile"),
+              leading: const Icon(
+                Icons.person,
+                size: 30,
+              ),
+              title: const Text(
+                "My Profile",
+                style: TextStyle(fontSize: 22),
+              ),
               onTap: () {},
             )
           ],
