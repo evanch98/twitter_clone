@@ -185,4 +185,16 @@ class TweetAPI implements ITweetAPI {
     );
     return document.documents;
   }
+
+  @override
+  Future<List<model.Document>> getTweetsByHashtag(String hashtag) async {
+    final document = await _db.listDocuments(
+      databaseId: AppwriteConstants.databaseId,
+      collectionId: AppwriteConstants.tweetsCollection,
+      queries: [
+        Query.search("hashtags", hashtag),
+      ],
+    );
+    return document.documents;
+  }
 }
