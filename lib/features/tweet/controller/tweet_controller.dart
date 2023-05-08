@@ -171,6 +171,7 @@ class TweetController extends StateNotifier<bool> {
     required String text,
     required BuildContext context,
     required String repliedTo,
+    required String repliedToUserId,
   }) {
     // if the text is empty, the tweet function cannot proceed
     if (text.isEmpty) {
