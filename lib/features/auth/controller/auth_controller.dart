@@ -29,14 +29,15 @@ final currentUserAccountProvider = FutureProvider.autoDispose((ref) {
 
 // userDetailsProvider is a reusable provider that returns the user data for the
 // the given uid
-final userDetailsProvider = FutureProvider.family.autoDispose((ref, String uid) {
+final userDetailsProvider =
+    FutureProvider.family.autoDispose((ref, String uid) {
   final authController = ref.watch(authControllerProvider.notifier);
   return authController.getUserData(uid);
 });
 
 // currentUserDetailsProvider will return the current user's details
 final currentUserDetailsProvider = FutureProvider.autoDispose((ref) {
-  final currentUserId  = ref.watch(currentUserAccountProvider).value!.$id;
+  final currentUserId = ref.watch(currentUserAccountProvider).value!.$id;
   final userDetails = ref.watch(userDetailsProvider(currentUserId));
   return userDetails.value;
 });
@@ -84,7 +85,8 @@ class AuthController extends StateNotifier<bool> {
           isTwitterBlue: false,
         );
         // save the user model to the appwrite database upon signing up
-        final res2 = await _userAPI.saveUserData(userModel); // response from the saveUserData
+        final res2 = await _userAPI
+            .saveUserData(userModel); // response from the saveUserData
         res2.fold((l) => showSnackBar(context, l.message), (r) {
           // if the account is created successfully and stored in the database,
           // it will show the confirmation message and navigate to the LoginView
@@ -125,7 +127,11 @@ class AuthController extends StateNotifier<bool> {
   void logout(BuildContext context) async {
     final res = await _authAPI.logout();
     res.fold((l) => null, (r) {
-      Navigator.pushAndRemoveUntil(context, SignUpView.route(), (route) => false,);
+      Navigator.pushAndRemoveUntil(
+        context,
+        SignUpView.route(),
+        (route) => false,
+      );
     });
   }
 }
