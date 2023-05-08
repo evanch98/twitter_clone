@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:twitter_clone/apis/apis.dart";
 import "package:twitter_clone/core/core.dart";
+import "package:twitter_clone/features/notifications/controller/notification_controller.dart";
 import "package:twitter_clone/models/models.dart";
 
 final userProfileControllerProvider =
@@ -34,14 +35,17 @@ class UserProfileController extends StateNotifier<bool> {
   final TweetAPI _tweetAPI;
   final StorageAPI _storageAPI;
   final UserAPI _userAPI;
+  final NotificationController _notificationController;
 
   UserProfileController({
     required TweetAPI tweetAPI,
     required StorageAPI storageAPI,
     required UserAPI userAPI,
+    required NotificationController notificationController,
   })  : _tweetAPI = tweetAPI,
         _storageAPI = storageAPI,
         _userAPI = userAPI,
+        _notificationController = notificationController,
         super(false);
 
   Future<List<Tweet>> getUserTweets(String uid) async {
@@ -89,16 +93,15 @@ class UserProfileController extends StateNotifier<bool> {
       userModel.followers.remove(currentUser.uid);
       // remove the user from the current user's following
       currentUser.following.remove(userModel.uid);
-    } else { // the current user has not followed the user
+    } else {
+      // the current user has not followed the user
       // add the current user to the user's followers
       userModel.followers.add(currentUser.uid);
       // add the user to the current user's following
       currentUser.following.add(userModel.uid);
     }
 
-    userModel = userModel.copyWith(
-      followers: userModel.followers
-    );
+    userModel = userModel.copyWith(followers: userModel.followers);
 
     currentUser = currentUser.copyWith(
       following: currentUser.following,
