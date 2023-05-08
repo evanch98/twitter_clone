@@ -23,16 +23,19 @@ class HashtagText extends StatelessWidget {
       if (element.startsWith("#")) {
         textSpans.add(
           TextSpan(
-            text: "$element ",
-            style: const TextStyle(
-              color: Pallete.blueColor,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-            recognizer: TapGestureRecognizer()..onTap = () {
-              Navigator.push(context, HashtagView.route(element),);
-            }
-          ),
+              text: "$element ",
+              style: const TextStyle(
+                color: Pallete.blueColor,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  Navigator.push(
+                    context,
+                    HashtagView.route(element),
+                  );
+                }),
         );
       } else if (element.startsWith("www.") ||
           element.startsWith("https://") ||
