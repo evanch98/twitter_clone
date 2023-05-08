@@ -229,7 +229,6 @@ class TweetController extends StateNotifier<bool> {
       repliedTo: repliedTo,
     );
     final res = await _tweetAPI.shareTweet(tweet);
-    state = false; // then the state is finished loading
     res.fold((l) => showSnackBar(context, l.message), (r) {
       _notificationController.createNotification(
         text: "${user.name} replied to your tweet!",
@@ -238,6 +237,7 @@ class TweetController extends StateNotifier<bool> {
         uid: repliedToUserId,
       );
     });
+    state = false; // then the state is finished loading
   }
 
   // text-based tweet
@@ -269,7 +269,6 @@ class TweetController extends StateNotifier<bool> {
       repliedTo: repliedTo,
     );
     final res = await _tweetAPI.shareTweet(tweet);
-    state = false; // then the state is finished loading
     res.fold((l) => showSnackBar(context, l.message), (r) {
       if (repliedToUserId.isNotEmpty) {
         _notificationController.createNotification(
@@ -280,6 +279,7 @@ class TweetController extends StateNotifier<bool> {
         );
       }
     });
+    state = false; // then the state is finished loading
   }
 
   // to extract link from the given text
