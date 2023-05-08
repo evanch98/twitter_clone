@@ -186,6 +186,7 @@ class TweetController extends StateNotifier<bool> {
         text: text,
         context: context,
         repliedTo: repliedTo,
+        repliedToUserId: repliedToUserId,
       );
     } else {
       // otherwise, text-based tweet
@@ -193,6 +194,7 @@ class TweetController extends StateNotifier<bool> {
         text: text,
         context: context,
         repliedTo: repliedTo,
+        repliedToUserId: repliedToUserId,
       );
     }
   }
@@ -203,6 +205,7 @@ class TweetController extends StateNotifier<bool> {
     required String text,
     required BuildContext context,
     required String repliedTo,
+    required String repliedToUserId,
   }) async {
     state = true;
     final hashtags = _getHashtagsFromText(text);
@@ -235,6 +238,7 @@ class TweetController extends StateNotifier<bool> {
     required String text,
     required BuildContext context,
     required String repliedTo,
+    required String repliedToUserId,
   }) async {
     state = true;
     final hashtags = _getHashtagsFromText(text);
