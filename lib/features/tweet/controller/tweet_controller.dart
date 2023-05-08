@@ -230,7 +230,14 @@ class TweetController extends StateNotifier<bool> {
     );
     final res = await _tweetAPI.shareTweet(tweet);
     state = false; // then the state is finished loading
-    res.fold((l) => showSnackBar(context, l.message), (r) => null);
+    res.fold((l) => showSnackBar(context, l.message), (r) {
+      _notificationController.createNotification(
+        text: "${user.name} replied to your tweet!",
+        postId: r.$id,
+        notificationType: NotificationType.reply,
+        uid: repliedToUserId,
+      );
+    });
   }
 
   // text-based tweet
@@ -263,7 +270,16 @@ class TweetController extends StateNotifier<bool> {
     );
     final res = await _tweetAPI.shareTweet(tweet);
     state = false; // then the state is finished loading
-    res.fold((l) => showSnackBar(context, l.message), (r) => null);
+    res.fold((l) => showSnackBar(context, l.message), (r) {
+      if (repliedToUserId.isNotEmpty) {
+        _notificationController.createNotification(
+          text: "${user.name} replied to your tweet!",
+          postId: r.$id,
+          notificationType: NotificationType.reply,
+          uid: repliedToUserId,
+        );
+      }
+    });
   }
 
   // to extract link from the given text
