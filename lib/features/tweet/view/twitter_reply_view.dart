@@ -145,6 +145,7 @@ class ReplyTweetScreen extends ConsumerWidget {
                     text: value,
                     context: context,
                     repliedTo: tweet.id,
+                    repliedToUserId: tweet.uid,
                   );
                   ref.read(tweetControllerProvider.notifier).updateCommentIds(
                         tweet,
