@@ -48,6 +48,12 @@ final getTweetByIdProvider =
   final tweetController = ref.watch(tweetControllerProvider.notifier);
   return tweetController.getTweetById(id);
 });
+
+// provide the tweets containing the give hashtag
+final getTweetsByHashtagProvider = FutureProvider.family.autoDispose((ref, String hashtag) {
+  final tweetController = ref.watch(tweetControllerProvider.notifier);
+  return tweetController.getTweetsByHashtag(hashtag);
+});
 //</editor-fold>
 
 class TweetController extends StateNotifier<bool> {
