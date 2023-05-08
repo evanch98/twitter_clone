@@ -30,6 +30,8 @@ abstract class IAuthAPI {
 
   // current user account which can be null
   Future<model.Account?> currentUserAccount();
+
+  FutureEitherVoid logout();
 }
 
 class AuthAPI implements IAuthAPI {
