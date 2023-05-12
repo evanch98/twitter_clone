@@ -5,17 +5,20 @@ import "package:twitter_clone/theme/theme.dart";
 class AuthField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
+  final bool isPassword;
 
   const AuthField({
     Key? key,
     required this.controller,
     required this.hintText,
+    required this.isPassword,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      obscureText: isPassword,
       decoration: InputDecoration(
         // when the text field is focused
         focusedBorder: OutlineInputBorder(

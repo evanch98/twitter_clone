@@ -68,6 +68,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                       AuthField(
                         controller: emailController,
                         hintText: "Email",
+                        isPassword: false,
                       ),
                       const SizedBox(
                         height: 25,
@@ -76,6 +77,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                       AuthField(
                         controller: passwordController,
                         hintText: "Password",
+                        isPassword: true,
                       ),
                       const SizedBox(
                         height: 40,
