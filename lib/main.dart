@@ -34,6 +34,7 @@ class MyApp extends ConsumerWidget {
             // if the state is loading, it will show the LoadingPage
             loading: () => const LoadingPage(),
           ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
